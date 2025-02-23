@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header .logo img {
+    width: 80px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+main img {
+    width: 2px; /* Ajusta el tamaño según tus necesidades */
+    height: auto; /* Mantiene la proporción original de las imágenes */
+    border-radius: 10px; /* Ajusta el valor para obtener el redondeado deseado */
+}
+
+
+/* Hero section */
+.contenedor {
+    text-align: center;
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fff;
+}
+
+.contenedor h1 {
+    font-size: 28px;
+    margin-bottom: 16px;
+}
+
+.contenedor img {
+    width: 80%;
+    max-width: 500px;
+    border-radius: 12px;
+}
+
+/* Planes */
+.plans {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Cada plan ocupa el 100% del ancho */
+.plan {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 20px;
+    width: 100%;
+    color: white;
+}
+
+.plan img {
+    width: 40%;
+    max-width: 400px;
+    border-radius: 12px;
+}
+
+.plan-content {
+    width: 50%;
+    padding: 0 20px;
+}
+
+.plan h2 {
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.plan p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Colores por plan */
+.plan.basic {
+    background-color: #8b6b42;
+}
+
+.plan.silver {
+    background-color: #928179;
+}
+
+.plan.gold {
+    background-color: #d4c267;
+}
+
+/* Alternar posición de imagen y texto */
+.plan:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* Llamado a la acción */
+.cta {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: white;
+}
+
+.cta h2 {
+    font-size: 24px;
+}
+
+.cta .highlight {
+    color: #00c853;
+    font-weight: bold;
+}
+
+.cta button {
+    margin-top: 16px;
+    padding: 12px 32px;
+    background-color: #00c853;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+/* Footer */
+footer {
+    background-color: #000;
+    color: white;
+    padding: 24px 32px;
+    text-align: center;
+}
+
+footer ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+
+footer p {
+    font-size: 12px;
+}
