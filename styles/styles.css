@@ -4,6 +4,20 @@
     box-sizing: border-box;
 }
 
+
+#app{
+    opacity: 1;
+    transition: opacity 1.2s ease-in-out;
+}
+
+.fade-out{
+    opacity: 0;
+}
+
+.fade-in{
+    opacity: 1;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
@@ -40,7 +54,6 @@ main img {
     height: auto; /* Mantiene la proporción original de las imágenes */
     border-radius: 10px; /* Ajusta el valor para obtener el redondeado deseado */
 }
-
 
 /* Hero section */
 .contenedor {
