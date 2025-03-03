@@ -1,29 +1,22 @@
-import  { navegadorPag } from "./routes.js";
+window.addEventListener("scroll", function(){
+  var navBar = document.getElementById("navbar");
+  navBar.classList.toggle("sticky", this.window.scrollY > 0);
+})
 
-class App {
-  constructor() {
-    this.init();
-  }
 
-  init() {
-    console.log("Aplicación iniciada");
-    this.registerEvents();
-  }
+//Definicion de rutas
+const routes = {
+  "/": "./pages/home.html",
+  "/index.html": "./pages/home.html",
+  "/services": "./pages/services.html",
+  "/driver": "./pages/driver.html",
+  "/prices": "./pages/prices.html",
+  "/faq": "./pages/faq.html",
+  "/login": "./pages/login.html",
+  "/contact": "./pages/contact.html",
+  "/404": "./pages/404.html",
+};
 
-  registerEvents() {
-    // Aquí puedes registrar eventos globales si los necesitas
-    document.addEventListener("DOMContentLoaded", () => {
-      console.log("DOM cargado");
-      navegadorPag(location.pathname); // Carga la página correcta al iniciar
-    });
+//Creacion del objeto
+const router = new Router(routes);
 
-    document.body.addEventListener("click", (e) => {
-      if (e.target.matches("[data-link]")) {
-        e.preventDefault();
-        navegadorPag(e.target.href);
-      }
-    });
-  }
-}
-
-export default new App();

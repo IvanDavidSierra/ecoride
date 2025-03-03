@@ -1,65 +1,60 @@
-const bodyApp = document.getElementById("app");
-export const navegadorPag = (url) =>{
-    //Añadir animación de fade out
-    bodyApp.classList.add("fade-out");
+class Router {
+  constructor(routes) {
+    this.routes = routes;
+    this.init();
+  }
 
-    setTimeout(() => {
-        history.pushState(null, null, url);
-        router();
+  init() {
+    window.addEventListener("DOMContentLoaded", () =>
+      this.handleRoute(location.pathname)
+    );
+    window.addEventListener("popstate", () =>
+      this.handleRoute(location.pathname)
+    );
 
-        //Añadir clases para animación de entrada
-        bodyApp.classList.remove("fade-out");
-        bodyApp.classList.add("fade-in");
-
-        setTimeout(() => bodyApp.classList.remove("fade-in"),500);
-    }, 300);
-};
-
-//Creacion de router para navegación de páginas
-
-const router = async () => {
-    const routes ={
-        "/" : "../pages/home.html",
-        "/services" : "../pages/services.html",
-        "/driver" : "../pages/driver.html",
-        "/prices" : "../pages/prices.html",
-        "/faq" : "../pages/faq.html",
-        "/login" : "../pages/login.html",
-        "/contact" : "../pages/contact.html"
-    };
-
-    const rutaActual = routes[location.pathname];
-    
-    if(rutaActual){
-        try {
-            const respuesta = await fetch(rutaActual);
-            if(respuesta.ok){
-                const html = await respuesta.text();
-                bodyApp.innerHTML = html;
-            }else{
-                const notFoundPage = await fetch("../pages/404.html");
-                const html = await notFoundPage.text();
-                bodyApp.innerHTML = html;
-            }
-        }catch (error){
-            const notFoundPage = await fetch("../pages/404.html");
-            const html = await notFoundPage.text();
-            bodyApp.innerHTML = html;
-        }
-    }
-};
-
-
-document.addEventListener("DOMContentLoaded", () => {
-    document.body.addEventListener("click", (e) => {
-        if(e.target.matches("[data-link]")){
-            e.preventDefault();
-            navegadorPag(e.target.href);
-        }
+    document.addEventListener("click", (e) => {
+      const target = e.target.closest("[data-link]");
+      if (target) {
+        e.preventDefault();
+        this.navigate(target.getAttribute("href"));
+      }
     });
-    router();
-});
+  }
 
-window.addEventListener("popstate", () => {
-    router();
-});
+  navigate(url) {
+    const app = document.getElementById("app");
+    app.classList.add("fade-out");
+
+    // Esperamos 2 segundos para que termine la animación
+    setTimeout(() => {
+      history.pushState({}, "", url);
+      this.handleRoute(url);
+    }, 500); // Duración de la animación (2.0s)
+  }
+
+  async handleRoute(url) {
+    const route = this.routes[url] || this.routes["/404"];
+    const app = document.getElementById("app");
+
+    try {
+      const response = await fetch(route, { cache: "no-cache" });
+      if (response.ok) {
+        const html = await response.text();
+        app.innerHTML = html;
+
+        // Quitar clase fade-out y añadir transición
+        app.classList.remove("fade-out");
+        app.classList.add("transition");
+
+        setTimeout(() => {
+          app.classList.remove("transition");
+        }, 700); // Duración de la animación fadeIn
+      } else {
+        this.handleRoute("/404");
+      }
+    } catch (error) {
+      console.error("Error al cargar la página:", error);
+      this.handleRoute("/404");
+    }
+  }
+}
