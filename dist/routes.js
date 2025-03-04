@@ -25,11 +25,18 @@ class Router {
     const app = document.getElementById("app");
     app.classList.add("fade-out");
 
-    // Esperamos 2 segundos para que termine la animación
+     //funcion para reedirigir a la parte de arriba de la página
+     window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+
     setTimeout(() => {
       history.pushState({}, "", url);
       this.handleRoute(url);
-    }, 500); // Duración de la animación (2.0s)
+
+    }, 500);
   }
 
   async handleRoute(url) {

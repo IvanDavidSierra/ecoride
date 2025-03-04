@@ -131,10 +131,6 @@ footer ul li a:hover::after {
 }
 
 
-
-
-
-
 /* home styles */ 
 .info-ecoride{
     display: flex;
@@ -190,7 +186,7 @@ footer ul li a:hover::after {
     width: 100%;
 }
 
-.hero-content{
+.hero{
     padding: 5% 5%;
 }
 
@@ -245,8 +241,6 @@ footer ul li a:hover::after {
 .hero-content button a:visited{
     color: inherit;
 }
-
-
 
 .que-ofrecemos .que-ofrecemos-info{
     display: flex;
@@ -351,86 +345,119 @@ footer ul li a:hover::after {
     border-radius: 12px;
 }
 
-/* Planes */
-.plans {
-    display: flex;
-    flex-direction: column;
+/*services page styles*/
+.services-title {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 2px;
+    grid-row-gap: 0px;
+    margin: 10% 20%;
+}
+
+.services-title .services-title-content h1{
+    font-size: 57pt;
+    margin-bottom: 15%;
+}
+
+.services-title .services-title-content p{
+    font-size: 17pt;
+    margin-right: 2%;
+}
+
+.services-title .services-title-img{
     width: 100%;
 }
 
-/* Cada plan ocupa el 100% del ancho */
-.plan {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 40px 20px;
+.services-title .services-title-img img{
     width: 100%;
+    height: 600px;
+    object-position: 90% 30%;
+    object-fit: cover;
+    border-radius: 5%;
+}
+
+.plan-basic, .plan-silver, .plan-gold{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.plan-basic{
+    background: #977F5D;
+}
+
+.plan-silver{
+    background: #A69C9C;
+}
+
+.plan-gold{
+    background: #D7C856;
+}
+
+.plan-img{
+    width: 90%;
+    padding: 2%;
+}
+
+.plan-img img{
+    width: 100%;
+    border-radius: 6%;
+    object-fit: cover;
+    height: 500px;
+}
+
+.plan-content{
+    width: 80%;
+    margin-left: 8%;
+    margin-right: 8%;
+}
+
+.plan-content h2, h3, h4{
+    font-size: 42pt;
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+
+.plan-content p{
+    width: 80%;
+    font-size: 20pt;
+    margin-bottom: 5%;
     color: white;
 }
 
-.plan img {
-    width: 40%;
-    max-width: 400px;
-    border-radius: 12px;
+.go-prices{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-.plan-content {
-    width: 50%;
-    padding: 0 20px;
-}
-
-.plan h2 {
-    font-size: 24px;
-    margin-bottom: 12px;
-}
-
-.plan p {
-    font-size: 16px;
-    line-height: 1.5;
-}
-
-/* Colores por plan */
-.plan.basic {
-    background-color: #8b6b42;
-}
-
-.plan.silver {
-    background-color: #928179;
-}
-
-.plan.gold {
-    background-color: #d4c267;
-}
-
-/* Alternar posición de imagen y texto */
-.plan:nth-child(even) {
-    flex-direction: row-reverse;
-}
-
-/* Llamado a la acción */
-.cta {
-    text-align: center;
-    padding: 40px 20px;
-    background-color: white;
-}
-
-.cta h2 {
-    font-size: 24px;
-}
-
-.cta .highlight {
-    color: #00c853;
+.go-prices h5{
+    margin-top: 5%;
+    font-size: 50pt;
     font-weight: bold;
 }
 
-.cta button {
-    margin-top: 16px;
-    padding: 12px 32px;
-    background-color: #00c853;
-    color: white;
+.go-prices button{
+    background-color: #12E821;
+    padding: 20px 30px;
     border: none;
-    border-radius: 25px;
+    border-radius: 50px;
     cursor: pointer;
+    color: white;
+    font-size: 20pt;
+    margin-top: 1%;
+    margin-bottom: 5%;
+}
+
+.go-prices button a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.go-prices button a:visited{
+    color: inherit;
 }
 
 .transition {
