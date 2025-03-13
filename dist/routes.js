@@ -9,7 +9,7 @@ class Router {
       this.handleRoute(location.pathname)
     );
     window.addEventListener("popstate", () =>
-      this.handleRoute(location.pathname)
+      this.handleRoute(location.pathname) //Verifica la ruta o url
     );
 
     document.addEventListener("click", (e) => {

@@ -1,13 +1,13 @@
+
+//Agrega efecto en la navbar al momento de desplazarnos de manera lateral 
 window.addEventListener("scroll", function(){
   var navBar = document.getElementById("navbar");
   navBar.classList.toggle("sticky", this.window.scrollY > 0);
 })
 
-
 //Definicion de rutas
 const routes = {
   "/": "./pages/home.html",
-  "/index.html": "./pages/home.html",
   "/services": "./pages/services.html",
   "/driver": "./pages/driver.html",
   "/prices": "./pages/prices.html",

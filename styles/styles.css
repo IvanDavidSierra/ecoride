@@ -494,3 +494,74 @@ html {
     }
   }
 
+/* precios styles */ 
+.info-ecoride-precio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.911), rgba(255, 255, 255, 0.4)), url(../assets/img/carro-paisaje.jpg);
+    background-size: cover;
+    position: relative;
+}
+.info-ecoride-precio h1{
+    font-size: 72pt;
+    margin-top: 1%;
+}
+
+/* Estilos generales para la tabla */
+table {
+    width: 70%; /* Reducir el ancho de la tabla */
+    margin: 20px auto; /* Centrar la tabla horizontalmente */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.438);
+    border-collapse: collapse; /* Asegurar que los bordes estén unidos */
+    
+  }
+  
+  /* Estilos para las celdas de encabezado y datos */
+  table th, table td {
+    padding: 60px 60px; /* Aumentar el padding vertical para mayor altura */
+    text-align: center;
+    border: 1px solid #00000092;
+  }
+  
+  /* Estilos para los encabezados de la tabla */
+  table th {
+    background-color: #908e8e7f;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.5em; /* Aumentar el tamaño de la fuente */
+  }
+  
+  /* Efecto hover para las filas */
+  table tbody tr:hover {
+    background-color: #e8e8e89f;
+    transition: background-color 0.2s ease;
+  }
+  
+ 
+  
+  /* Estilos para la primera columna (características) */
+  table td:first-child {
+    font-weight: bold;
+    background-color: #ffffff;
+    font-size: 1.5em;
+  }
+  
+  /* Estilos para las celdas de los planes (Basic, Silver, Gold) */
+  table tbody tr td:not(:first-child) {
+    
+    color: #050505;
+    font-weight: bold;
+  }
+  
+  /* Estilos para la última columna (Gold) */
+  table tbody tr td:last-child {
+    font-weight: bold;
+    color: #000000;
+  }
+ 
+
