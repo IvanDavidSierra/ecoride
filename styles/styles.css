@@ -301,7 +301,7 @@ footer ul li a:hover::after {
     text-transform: uppercase;
 
 }
-.que-ofrecemos .button-services{
+.que-ofrecemos .button-services {
     background-color: #12E821;
     padding: 20px 30px;
     border: none;
@@ -439,7 +439,7 @@ footer ul li a:hover::after {
     font-weight: bold;
 }
 
-.go-prices button{
+.go-price button{
     background-color: #12E821;
     padding: 20px 30px;
     border: none;
@@ -459,40 +459,140 @@ footer ul li a:hover::after {
 .go-prices button a:visited{
     color: inherit;
 }
+/* Log-in/Sign-in styles */ 
 
-.transition {
-    animation: fadeIn 0.7s ease-in-out;
-  }
-  
-.fade-out {
-    animation: fadeOut 1.0s ease-in-out;
+.login-background{
+    height: 931px;
+    width: 100%;
+    background-image: url(../assets/img/carro-paisaje.jpg);
+    background-position: center;
+    background-size: cover;
 }
 
-html {
-    scroll-behavior: smooth;
+.login-background h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 9%;
+    color: white;
 }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: rotateX(-10deg);
-    }
-    to {
-      opacity: 1;
-      transform: rotateX(0);
-    }
-  }
-  
-  @keyframes fadeOut {
-    from {
-      opacity: 1;
-      transform: rotateX(-10deg);
-    }
-    to {
-      opacity: 0;
-      transform: rotateX(0);
-    }
-  }
+
+.form-box{
+    width: 577px;
+    height: 650px;
+    position: relative;
+    margin: 1% auto;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.button-box{
+    width: 100%;
+    margin: 10px;
+    position: relative;   
+}
+
+.btn{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: .5s
+}
+
+
+.toggle-button{
+    padding: 10px 55px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 14pt;
+    color: #ceccd3;
+    transition: background-color 0.3s ease;
+    border-bottom: 4px solid #ceccd3;
+}
+
+.login-form .input-label,
+.signup-form .input-label{
+    font-size: 14pt;
+    font-weight: bold;
+    letter-spacing: 2px; 
+    margin-bottom: 3%;
+}
+
+.login-form .input-field,
+.signup-form .input-field{
+    width: 100%;
+    border-radius: 30px;
+    padding: 3%;
+    border: 1px solid #c0b4b4;
+    margin-bottom: 3%;
+}
+
+.login-form {
+    margin-top: 10% ;
+    padding: 10% ;
+}
+
+.button-form{
+    background-color: #12E821;
+    padding: 2%;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    color: white;
+    font-size: 15pt;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.button-form:hover{
+    color: black;
+}
+
+.login-form a, 
+.signup-form a {
+    text-decoration: underline;
+    color: inherit;
+    margin-bottom: 5%;
+}
+
+.names-user {
+    display: flex;
+    gap: 10px; /* Espacio entre los dos campos */
+}
+
+.input-group{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.signup-form{
+    padding: 5%;
+}
+
+.checkbox-group{
+    margin-bottom: 2%;
+}
+
+.checkbox{
+    display: flex;
+    align-items: center; /* Alinea verticalmente */
+    gap: 8px; /* Espacio entre checkbox y texto */
+    margin-bottom: 10px; /* Separación opcional */
+}
+input[type="checkbox"],
+input[type="checkbox"]{
+   accent-color: #12E821;
+   border-radius: 20%;
+}
 
 /* precios styles */ 
 .info-ecoride-precio{
@@ -563,5 +663,84 @@ table {
     font-weight: bold;
     color: #000000;
   }
- 
+
+/* animaciones */
+.transition {
+    animation: fadeIn 0.7s ease-in-out;
+  }
+  
+.fade-out {
+    animation: fadeOut 1.0s ease-in-out;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: rotateX(-10deg);
+    }
+    to {
+      opacity: 1;
+      transform: rotateX(0);
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+      transform: rotateX(-10deg);
+    }
+    to {
+      opacity: 0;
+      transform: rotateX(0);
+    }
+  }
+
+.form-container {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.login-form, .signup-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container .input-field, .form-container .button-form {
+    margin-bottom: 15px;
+}
+
+.login-active .form-container:nth-child(2) {
+    transform: translateX(0%);
+}
+
+.login-active .form-container:nth-child(3) {
+    transform: translateX(100%);
+}
+
+.signup-active .form-container:nth-child(2) {
+    transform: translateX(-100%);
+}
+
+.signup-active .form-container:nth-child(3) {
+    transform: translateX(0%);
+}
+
+ /* Cuando está activo el login, el botón Iniciar Sesión es negro */
+.form-box.login-active #login-btn {
+    color: black;
+    border-bottom: 4px solid black;
+  }
+  
+  /* Cuando está activo el registro, el botón Registrarse es negro */
+  .form-box.signup-active #register-btn {
+    color: #000000;
+    border-bottom: 4px solid black;
+  }
 

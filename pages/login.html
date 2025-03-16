@@ -1,45 +1,142 @@
 <div class="login-background">
-    <h1>Accede a nuestro portal para hacer tu transporte más <span class="green">fácil</span></h1>
-  <div action="#" class="form-box">
+  <h1>
+    Accede a nuestro portal para hacer tu transporte más
+    <span class="green">fácil</span>
+  </h1>
+  <div class="form-box login-active">
     <div class="button-box">
       <div id="btn" class="btn">
-        <button type="button" class="toggle-button">INICIAR SESIÓN</button>
-        <button type="button" class="toggle-button">REGISTRARSE</button>
+        <button
+          type="button"
+          class="toggle-button"
+          id="login-btn"
+          onclick="showLogin()"
+        >
+          INICIAR SESIÓN
+        </button>
+        <button
+          type="button"
+          class="toggle-button"
+          id="register-btn"
+          onclick="showSignup()"
+        >
+          REGISTRARSE
+        </button>
       </div>
     </div>
-    <form action="#" class="input-group">
-        <label for="mail-user">CORREO ELECTRONICO</label>
-        <input class="input-field" type="email" name="mail-user" id="mail-user" placeholder="Ingresa tu correo" required>
-        <label for="password">CONTRASEÑA</label>
-        <input class="input-field" type="password" name="password" id="password" placeholder="Ingresa tu contraseña" required>
 
+    <div class="form-container">
+      <form id="login-form" action="#" class="login-form active">
+        <label class="input-label" for="mail-user">CORREO ELECTRONICO</label>
+        <input
+          class="input-field"
+          type="email"
+          name="mail-user"
+          id="mail-user"
+          placeholder="Ingresa tu correo"
+          required
+        />
+        <label class="input-label" for="password">CONTRASEÑA</label>
+        <input
+          class="input-field"
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Ingresa tu contraseña"
+          required
+        />
         <div class="checkbox">
-            <input class="checkbox-field" type="checkbox" name="remember" id="remember">
-            <label for="remember">Recuerdame</label> 
+          <input type="checkbox" name="remember" id="remember" />
+          <label for="remember">Recuerdame</label>
         </div>
 
         <a href="#">¿Olvidaste tu contraseña?</a>
-        <button type="submit">Iniciar sesión</button>
-    </form>
+        <button class="button-form" type="submit">Iniciar sesión</button>
+      </form>
+    </div>
 
-    <form action="#" class="input-group">
-        <label for="names">NOMBRES</label>
-        <input class="input-field" type="text" name="names" id="names" placeholder="Ingresa tus nombres" required>
-        <label for="last-names">APELLIDOS</label>
-        <input class="input-field" type="text" name="last-names" id="last-names" placeholder="Ingresa tus apellidos" required>
-        <label for="email">CORREO ELECTRONICO</label>
-        <input class="input-field" type="email" name="email" id="email" placeholder="Ingresa tu correo" required>
-        <label for="password-register">CONTRASEÑA</label>
-        <input class="input-field" type="password" name="password-register" id="password-register" placeholder="Ingresa tu contraseña" required>
-        <label for="confirm-password">CONFIRMAR CONTRASEÑA</label>
-        <input class="input-field" type="password" name="confirm-password" id="confirm-password" placeholder="Confirma tu contraseña" required>
-        <div class="checkbox">
-            <input class="checkbox-field" type="checkbox" name="driver-check" id="driver-check">
-            <label for="driver-check">Quiero ser conductor</label>
-            <input class="checkbox-field" type="checkbox" name="terms" id="terms" required>
-            <label for="terms">Aceptas nuestros <a href="#" target="_blank">términos y condiciones</a></label>
+    <div class="form-container">
+      <form id="signup-form" action="#" class="signup-form">
+        <div class="names-user">
+          <div class="input-group">
+            <label class="input-label" for="names">NOMBRES</label>
+            <input
+              class="input-field"
+              type="text"
+              name="names"
+              id="names"
+              placeholder="Ingresa tus nombres"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <label class="input-label" for="last-names">APELLIDOS</label>
+            <input
+              class="input-field"
+              type="text"
+              name="last-names"
+              id="last-names"
+              placeholder="Ingresa tus apellidos"
+              required
+            />
+          </div>
         </div>
-        <button type="submit">Registrarse</button>
-    </form>
+
+        <label class="input-label" for="email">CORREO ELECTRONICO</label>
+        <input
+          class="input-field"
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Ingresa tu correo"
+          required
+        />
+        <label class="input-label" for="password-register">CONTRASEÑA</label>
+        <input
+          class="input-field"
+          type="password"
+          name="password-register"
+          id="password-register"
+          placeholder="Ingresa tu contraseña"
+          required
+        />
+        <label class="input-label" for="confirm-password"
+          >CONFIRMAR CONTRASEÑA</label
+        >
+        <input
+          class="input-field"
+          type="password"
+          name="confirm-password"
+          id="confirm-password"
+          placeholder="Confirma tu contraseña"
+          required
+        />
+        <div class="checkbox-register">
+          <div class="checkbox-group">
+            <input
+              class="checkbox-field"
+              type="checkbox"
+              name="driver-check"
+              id="driver-check"
+            />
+            <label for="driver-check">Quiero ser conductor</label>
+          </div>
+          <div class="checkbox-group">
+            <input
+              class="checkbox-field"
+              type="checkbox"
+              name="terms"
+              id="terms"
+              required
+            />
+            <label for="terms"
+              >Aceptas nuestros
+              <a href="#" target="_blank">términos y condiciones</a></label
+            >
+          </div>
+        </div>
+        <button class="button-form" type="submit">Registrarse</button>
+      </form>
+    </div>
   </div>
 </div>
