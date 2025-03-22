@@ -9,7 +9,32 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="./assets/img/logo Eco-Ride.png" />
+<<<<<<< HEAD
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+=======
+    
+    <meta name="theme-color" content="#000000" />
+    <meta name="MobileOptimized" content="width" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/img/Logo Eco-Ride 128x128.svg"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="512x512"
+      href="./assets/img/Logo Eco-Ride 512x512.svg"
+    />
+    <link rel="apple-touch-startup-image" href="./assets/img/logo Eco-Ride.png" />
+
+    <!--Enlazar el archivo manifest.json -->
+    <link rel="manifest" href="./manifest.json" />
+
+
+>>>>>>> 53596ce491dd816d74fe4f8a1a2d4184e01c853c
   </head>
   <body>
     <header>
@@ -28,6 +53,12 @@
       
     </header>
 
+      <div class="boton-accesibilidad">
+          <button id="aumentarFuente">A+</button>
+          <button id="disminuirFuente">A-</button>
+          <button id="contraste">🌙</button>
+      </div>
+
     <main id="app"></main>
 
     <footer>
@@ -44,10 +75,19 @@
     </footer>
     <script src="./dist/routes.js"></script>
     <script src="./dist/app.js"></script>
+<<<<<<< HEAD
     <script src="./dist/auth-users.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="./dist/map.js"></script>
     <script src="https://kit.fontawesome.com/e9a57eb21f.js" crossorigin="anonymous"></script>
     
+=======
+    <script type="module" src="./dist/registerUsers.js"></script>
+    <script type="module" src="./dist/loginUsers.js"></script>
+    <script src="https://kit.fontawesome.com/e9a57eb21f.js" crossorigin="anonymous"></script>
+    <script src="./worker.js"></script>
+    <script src="./dist/accesibilidad.js"></script>
+
+>>>>>>> 53596ce491dd816d74fe4f8a1a2d4184e01c853c
   </body>
 </html>

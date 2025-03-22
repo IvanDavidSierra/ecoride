@@ -1,6 +1,6 @@
 <div class="login-background">
   <h1>
-    Accede a nuestro portal para hacer tu transporte más
+    <span>Accede a nuestro portal para hacer tu transporte más</span>
     <span class="green">fácil</span>
   </h1>
   <div class="form-box login-active">
@@ -26,13 +26,12 @@
     </div>
 
     <div class="form-container">
-      <form id="login-form" action="#" class="login-form active">
-        <label class="input-label" for="mail-user">CORREO ELECTRONICO</label>
+      <form id="login-form" class="login-form active">
+        <label class="input-label" for="mail-login">CORREO ELECTRONICO</label>
         <input
           class="input-field"
           type="email"
-          name="mail-user"
-          id="mail-user"
+          id="mailLogin"
           placeholder="Ingresa tu correo"
           required
         />
@@ -40,8 +39,7 @@
         <input
           class="input-field"
           type="password"
-          name="password"
-          id="password"
+          id="passwordLogin"
           placeholder="Ingresa tu contraseña"
           required
         />
@@ -51,12 +49,12 @@
         </div>
 
         <a href="#">¿Olvidaste tu contraseña?</a>
-        <button class="button-form" type="submit">Iniciar sesión</button>
+        <button class="button-form" id="signInButton" type="submit">Iniciar sesión</button>
       </form>
     </div>
 
     <div class="form-container">
-      <form id="signup-form" action="#" class="signup-form">
+      <form id="signup-form" class="signup-form">
         <div class="names-user">
           <div class="input-group">
             <label class="input-label" for="names">NOMBRES</label>
@@ -75,7 +73,7 @@
               class="input-field"
               type="text"
               name="last-names"
-              id="last-names"
+              id="lastNames"
               placeholder="Ingresa tus apellidos"
               required
             />
@@ -135,7 +133,7 @@
             >
           </div>
         </div>
-        <button class="button-form" type="submit">Registrarse</button>
+        <button class="button-form" id="signUpButton" type="submit">Registrarse</button>
       </form>
     </div>
   </div>
