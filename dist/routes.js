@@ -9,7 +9,7 @@ class Router {
       this.handleRoute(location.pathname)
     );
     window.addEventListener("popstate", () =>
-      this.handleRoute(location.pathname) //Verifica la ruta o url
+      this.handleRoute(location.pathname) 
     );
 
     document.addEventListener("click", (e) => {
@@ -25,7 +25,6 @@ class Router {
     const app = document.getElementById("app");
     app.classList.add("fade-out");
 
-     //funcion para reedirigir a la parte de arriba de la página
      window.scrollTo({
       top: 0,
       left: 0,
@@ -48,8 +47,6 @@ class Router {
         if (response.ok) {
             const html = await response.text();
             app.innerHTML = html;
-
-            // Quitar clase fade-out y añadir transición
             app.classList.remove("fade-out");
             app.classList.add("transition");
 
@@ -58,7 +55,7 @@ class Router {
 
             setTimeout(() => {
                 app.classList.remove("transition");
-            }, 700); // Duración de la animación fadeIn
+            }, 700);
         } else {
             this.handleRoute("/404");
         }
