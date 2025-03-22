@@ -568,12 +568,12 @@ h4 {
 }
 /* Log-in/Sign-in styles */
 
-.login-background {
-  height: 1050px;
-  width: 100%;
-  background-image: url(../assets/img/carro-paisaje.jpg);
-  background-position: center;
-  background-size: cover;
+.login-background{
+    height: 931px;
+    width: 100%;
+    background-image: url(../assets/img/carro-paisaje.jpg);
+    background-position: center;
+    background-size: cover;
 }
 
 .login-background h1 {
@@ -585,15 +585,15 @@ h4 {
   color: white;
 }
 
-.form-box {
-  width: 577px;
-  position: relative;
-  height: 600px;
-  margin: 1% auto;
-  background-color: #fff;
-  padding: 5px;
-  border-radius: 10px;
-  overflow: hidden;
+.form-box{
+    width: 577px;
+    height: 650px;
+    position: relative;
+    margin: 1% auto;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .button-box {
@@ -625,18 +625,20 @@ h4 {
 }
 
 .login-form .input-label,
-.signup-form .input-label {
-  font-size: 14pt;
-  font-weight: bold;
-  letter-spacing: 2px;
+.signup-form .input-label{
+    font-size: 14pt;
+    font-weight: bold;
+    letter-spacing: 2px; 
+    margin-bottom: 3%;
 }
 
 .login-form .input-field,
-.signup-form .input-field {
-  width: 100%;
-  border-radius: 30px;
-  padding: 3%;
-  border: 1px solid #c0b4b4;
+.signup-form .input-field{
+    width: 100%;
+    border-radius: 30px;
+    padding: 3%;
+    border: 1px solid #c0b4b4;
+    margin-bottom: 3%;
 }
 
 .login-form {
@@ -644,34 +646,20 @@ h4 {
   padding: 10%;
 }
 
-.button-form {
-  background-color: #12e821;
-  padding: 2%;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  color: black;
-  font-size: 15pt;
-  width: 100%;
-  margin: 0 auto;
-  gap: 10px; /* Espacio entre texto y spinner */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.button-form{
+    background-color: #12E821;
+    padding: 2%;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    color: white;
+    font-size: 15pt;
+    width: 100%;
+    margin: 0 auto;
 }
 
-.carga {
-  border: 3px solid #ffffff; /* Color gris claro */
-  border-top: 3px solid #000000; /* Azul en la parte superior */
-  border-radius: 50%;
-  width: 16px;
-  height: 16px;
-  animation: spin 1s linear infinite;
-  display: none;
-}
-
-.button-form:hover {
-  border: #000000 2px solid;
+.button-form:hover{
+    color: black;
 }
 
 .login-form a,
@@ -682,8 +670,8 @@ h4 {
 }
 
 .names-user {
-  display: flex;
-  gap: 10px;
+    display: flex;
+    gap: 10px; /* Espacio entre los dos campos */
 }
 
 .input-group {
@@ -692,20 +680,19 @@ h4 {
   flex: 1;
 }
 
-.signup-form {
-  padding: 5%;
-  margin-top: 1%;
+.signup-form{
+    padding: 5%;
 }
 
 .checkbox-group {
   margin-bottom: 2%;
 }
 
-.checkbox {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
+.checkbox{
+    display: flex;
+    align-items: center; /* Alinea verticalmente */
+    gap: 8px; /* Espacio entre checkbox y texto */
+    margin-bottom: 10px; /* Separación opcional */
 }
 input[type="checkbox"],
 input[type="checkbox"] {
@@ -742,47 +729,56 @@ input[type="checkbox"] {
 }
 
 table {
-  width: 70%;
-  margin: 20px auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.438);
-  border-collapse: collapse;
-}
-
-table th,
-table td {
-  padding: 60px 60px;
-  text-align: center;
-  border: 1px solid #00000092;
-}
-
-table th {
-  background-color: #908e8e7f;
-  color: rgb(0, 0, 0);
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 1.5em;
-}
-
-table tbody tr:hover {
-  background-color: #e8e8e89f;
-  transition: background-color 0.2s ease;
-}
-
-table td:first-child {
-  font-weight: bold;
-  background-color: #ffffff;
-  font-size: 1.5em;
-}
-
-table tbody tr td:not(:first-child) {
-  color: #050505;
-  font-weight: bold;
-}
-
-table tbody tr td:last-child {
-  font-weight: bold;
-  color: #000000;
-}
+    width: 70%; /* Reducir el ancho de la tabla */
+    margin: 20px auto; /* Centrar la tabla horizontalmente */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.438);
+    border-collapse: collapse; /* Asegurar que los bordes estén unidos */
+    
+  }
+  
+  /* Estilos para las celdas de encabezado y datos */
+  table th, table td {
+    padding: 60px 60px; /* Aumentar el padding vertical para mayor altura */
+    text-align: center;
+    border: 1px solid #00000092;
+  }
+  
+  /* Estilos para los encabezados de la tabla */
+  table th {
+    background-color: #908e8e7f;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.5em; /* Aumentar el tamaño de la fuente */
+  }
+  
+  /* Efecto hover para las filas */
+  table tbody tr:hover {
+    background-color: #e8e8e89f;
+    transition: background-color 0.2s ease;
+  }
+  
+ 
+  
+  /* Estilos para la primera columna (características) */
+  table td:first-child {
+    font-weight: bold;
+    background-color: #ffffff;
+    font-size: 1.5em;
+  }
+  
+  /* Estilos para las celdas de los planes (Basic, Silver, Gold) */
+  table tbody tr td:not(:first-child) {
+    
+    color: #050505;
+    font-weight: bold;
+  }
+  
+  /* Estilos para la última columna (Gold) */
+  table tbody tr td:last-child {
+    font-weight: bold;
+    color: #000000;
+  }
 
 /* animaciones */
 .transition {
@@ -796,73 +792,28 @@ table tbody tr td:last-child {
 html {
   scroll-behavior: smooth;
 }
-
-.boton-accesibilidad {
-  position: fixed;
-  top: 50%;
-  right: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  z-index: 1000;
-  transform: translateY(-50%);
-}
-
-.boton-accesibilidad button {
-  background-color: #000000;
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 5px;
-  transition: 0.3s;
-}
-
-.boton-accesibilidad button:hover {
-  background-color: #12e821;
-}
-
-body.contraste-alto {
-  background-color: black !important;
-  color: yellow !important;
-}
-
-body.contraste-alto a {
-  color: cyan !important;
-}
-.modo-contraste {
-  filter: invert(1) hue-rotate(180deg);
-  background-color: black !important;
-  color: rgb(255, 0, 0) !important;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: rotateX(-10deg);
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: rotateX(-10deg);
+    }
+    to {
+      opacity: 1;
+      transform: rotateX(0);
+    }
   }
-  to {
-    opacity: 1;
-    transform: rotateX(0);
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+      transform: rotateX(-10deg);
+    }
+    to {
+      opacity: 0;
+      transform: rotateX(0);
+    }
   }
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-    transform: rotateX(-10deg);
-  }
-  to {
-    opacity: 0;
-    transform: rotateX(0);
-  }
-}
 
 .form-container {
   position: absolute;
@@ -878,9 +829,8 @@ body.contraste-alto a {
   flex-direction: column;
 }
 
-.form-container .input-field,
-.form-container .button-form {
-  margin-bottom: 2%;
+.form-container .input-field, .form-container .button-form {
+    margin-bottom: 15px;
 }
 
 .login-active .form-container:nth-child(2) {
@@ -900,59 +850,13 @@ body.contraste-alto a {
 }
 
 .form-box.login-active #login-btn {
-  color: black;
-  border-bottom: 4px solid black;
-}
+    color: black;
+    border-bottom: 4px solid black;
+  }
+  
+  /* Cuando está activo el registro, el botón Registrarse es negro */
+  .form-box.signup-active #register-btn {
+    color: #000000;
+    border-bottom: 4px solid black;
+  }
 
-.form-box.signup-active #register-btn {
-  color: #000000;
-  border-bottom: 4px solid black;
-}
-
-#mi_mapa {
-  height: 800px; 
-  width: 100%; 
-  border-radius: 70%;
-}
-.containers {
-  border: 2px solid #333; /* Borde oscuro */
-  padding: 20px;
-  border-radius: 8px;
-  text-align: center; /* Centrar el texto */
-}
-.containers h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
-}
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centrar elementos del formulario */
-}
-
-.form label {
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: #555;
-  text-align: center; /* Centrar texto de las etiquetas */
-}
-
-.form input[type="text"] {
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-  width: 80%; /* Ancho del campo de entrada */
-  text-align: center; /* Centrar texto dentro del input */
-}
-
-.button-form:hover {
-  background-color: #0056b3;
-}
-
-/* Estilos para centrar el texto en la sección info-ecoride */
-.info-ecoride {
-  text-align: center;
-}

@@ -133,7 +133,7 @@ function obtenerRuta(puntoPartida, puntoLlegada, map) {
 
 // Detectar cuándo se ha cargado carrera.html dinámicamente
 document.addEventListener("DOMContentLoaded", () => {
-  if (window.location.pathname === "/app") {
+  if (window.location.pathname === "/carrera") {
     initMap();
   }
 });

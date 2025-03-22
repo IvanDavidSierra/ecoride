@@ -2,9 +2,11 @@
 const routes = {
   "/": "./pages/home.html",
   "/index.html": "./pages/home.html",
+  "/index.html": "./pages/home.html",
   "/services": "./pages/services.html",
   "/driver": "./pages/driver.html",
   "/prices": "./pages/prices.html",
+  "/carrera": "./pages/carrera.html",
   "/faq": "./pages/faq.html",
   "/auth-user": "./pages/auth-users.html",
   "/contact": "./pages/contact.html",
@@ -19,23 +21,22 @@ const router = new Router(routes);
 window.addEventListener("scroll", function () {
   var navBar = document.getElementById("navbar");
   navBar.classList.toggle("sticky", this.window.scrollY > 0);
-});
+})
 
 function showLogin() {
-  const formBox = document.querySelector(".form-box");
-  if (formBox) {
-    formBox.classList.add("login-active");
-    formBox.classList.remove("signup-active");
-  }
+  const formBox = document.querySelector('.form-box');
+  formBox.classList.add('login-active');
+  formBox.classList.remove('signup-active');
 }
 
 function showSignup() {
-  const formBox = document.querySelector(".form-box");
-  if (formBox) {
-    formBox.classList.add("signup-active");
-    formBox.classList.remove("login-active");
-  }
+  const formBox = document.querySelector('.form-box');
+  formBox.classList.add('signup-active');
+  formBox.classList.remove('login-active');
 }
 
-
+// Mostrar el formulario de inicio de sesión por defecto al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+  showLogin();
+});
 
