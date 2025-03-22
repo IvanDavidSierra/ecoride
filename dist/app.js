@@ -1,9 +1,11 @@
 //Definicion de rutas
 const routes = {
   "/": "./pages/home.html",
+  "/index.html": "./pages/home.html",
   "/services": "./pages/services.html",
   "/driver": "./pages/driver.html",
   "/prices": "./pages/prices.html",
+  "/carrera": "./pages/carrera.html",
   "/faq": "./pages/faq.html",
   "/login": "./pages/login.html",
   "/contact": "./pages/contact.html",
@@ -21,18 +23,21 @@ window.addEventListener("scroll", function(){
 
 function showLogin() {
   const formBox = document.querySelector('.form-box');
-  formBox.classList.add('login-active');
-  formBox.classList.remove('signup-active');
+  if (formBox) {
+      formBox.classList.add('login-active');
+      formBox.classList.remove('signup-active');
+  }
 }
 
 function showSignup() {
   const formBox = document.querySelector('.form-box');
-  formBox.classList.add('signup-active');
-  formBox.classList.remove('login-active');
+  if (formBox) {
+      formBox.classList.add('signup-active');
+      formBox.classList.remove('login-active');
+  }
 }
 
 // Mostrar el formulario de inicio de sesión por defecto al cargar la página
 document.addEventListener('DOMContentLoaded', function() {
   showLogin();
 });
-
