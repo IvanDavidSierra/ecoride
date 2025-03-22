@@ -1,9 +1,9 @@
 <div class="login-background">
   <h1>
-    Accede a nuestro portal para hacer tu transporte más
+    <span>Accede a nuestro portal para hacer tu transporte más</span>
     <span class="green">fácil</span>
   </h1>
-  <div class="form-box login-active">
+  <div class="form-box login-active" id="form-box">
     <div class="button-box">
       <div id="btn" class="btn">
         <button
@@ -26,13 +26,12 @@
     </div>
 
     <div class="form-container">
-      <form id="login-form" action="#" class="login-form active">
-        <label class="input-label" for="mail-user">CORREO ELECTRONICO</label>
+      <form id="login-form" class="login-form active">
+        <label class="input-label" for="mail-login">CORREO ELECTRONICO</label>
         <input
           class="input-field"
           type="email"
-          name="mail-user"
-          id="mail-user"
+          id="mailLogin"
           placeholder="Ingresa tu correo"
           required
         />
@@ -40,23 +39,27 @@
         <input
           class="input-field"
           type="password"
-          name="password"
-          id="password"
+          id="passwordLogin"
           placeholder="Ingresa tu contraseña"
           required
         />
+        <p id="noCredentials" class="error-message" style="display: none;">No se han ingresado credenciales</p>
+        <p id="credentials" class="error-message" style="display: none;">Credenciales incorrectas</p>
+        <p id="successLogin" class="messageSuccess" style="display: none;">¡Bienvenido a EcoRide!</p>
         <div class="checkbox">
-          <input type="checkbox" name="remember" id="remember" />
+          <input type="checkbox" name="remember" id="remember"/>
           <label for="remember">Recuerdame</label>
+
         </div>
 
         <a href="#">¿Olvidaste tu contraseña?</a>
-        <button class="button-form" type="submit">Iniciar sesión</button>
+
+        <button class="button-form" id="signInButton" type="submit">Iniciar sesión <div id="carga" class="carga"></div></button>
       </form>
     </div>
 
     <div class="form-container">
-      <form id="signup-form" action="#" class="signup-form">
+      <form id="signup-form" class="signup-form">
         <div class="names-user">
           <div class="input-group">
             <label class="input-label" for="names">NOMBRES</label>
@@ -68,6 +71,7 @@
               placeholder="Ingresa tus nombres"
               required
             />
+            <p id="name-error" class="error-message" style="display: none;">Nombre inválido: contiene números</p>
           </div>
           <div class="input-group">
             <label class="input-label" for="last-names">APELLIDOS</label>
@@ -75,10 +79,11 @@
               class="input-field"
               type="text"
               name="last-names"
-              id="last-names"
+              id="lastNames"
               placeholder="Ingresa tus apellidos"
               required
             />
+            <p id="lastName-error" class="error-message" style="display: none;">Apellido inválido: contiene números</p>
           </div>
         </div>
 
@@ -91,6 +96,8 @@
           placeholder="Ingresa tu correo"
           required
         />
+        <p id="email-error" class="error-message" style="display: none;">Correo inválido</p>
+        <p id="emailInUse" class="error-message" style="display: none;">Correo ya esta en uso. Usar otro</p>
         <label class="input-label" for="password-register">CONTRASEÑA</label>
         <input
           class="input-field"
@@ -100,6 +107,9 @@
           placeholder="Ingresa tu contraseña"
           required
         />
+        <p id="password-error" class="error-message" style="display: none;">
+          Contraseña invalida: La contraseña debe tener entre 8 y 16 caracteres, incluir mayúsculas, minúsculas, números y caracteres especiales (., :, #, @$!%*?&).
+        </p>
         <label class="input-label" for="confirm-password"
           >CONFIRMAR CONTRASEÑA</label
         >
@@ -111,6 +121,9 @@
           placeholder="Confirma tu contraseña"
           required
         />
+        <p id="confirmPasswordError" class="error-message" style="display: none;">
+          Las contraseñas no coinciden.
+        </p>
         <div class="checkbox-register">
           <div class="checkbox-group">
             <input
@@ -133,9 +146,12 @@
               >Aceptas nuestros
               <a href="#" target="_blank">términos y condiciones</a></label
             >
+            <p id="terms-error" class="error-message" style="display: none;">Debe aceptar los términos y condiciones para registrarse</p>
+            <p id="success" class="messageSuccess" style="display: none;">¡Cuenta creada satisfactoriamente!</p>
+            <p id="systemError" class="error-message" style="display: none;">Error al registrarse</p>
           </div>
         </div>
-        <button class="button-form" type="submit">Registrarse</button>
+        <button class="button-form" id="signUpButton" type="submit">Registrarse <div id="carga" class="carga"></div> </button>
       </form>
     </div>
   </div>

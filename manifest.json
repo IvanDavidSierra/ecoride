@@ -1,0 +1,42 @@
+{
+  "name": "EcoRide",
+  "short_name": "PWAEcoRide",
+  "description": "Sitio web para transporte en vehiculos ecologicos",
+  "lang": "es-ES",
+  "start_url": "./",
+  "scope": "./",
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay"],
+  "edge_side_panel": { "enabled": true, "preferred_width": 400 },
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./assets/logo Eco-Ride.jpg",
+      "sizes": "1080x1080",
+      "type": "image/jpg"
+    },
+    {
+      "src": "./assets/Logo Eco-Ride 512x512.svg",
+      "sizes": "512x512",
+      "type": "image/svg"
+    },
+    {
+      "src": "./assets/Logo Eco-Ride 256x256.svg",
+      "sizes": "256x256",
+      "type": "image/svg"
+    },
+    {
+      "src": "./assets/Logo Eco-Ride 128x128.svg",
+      "sizes": "128x128",
+      "type": "image/svg"
+    }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+EcoRide",
+      "url": "./?cmd=%s"
+    }
+  ]
+}
