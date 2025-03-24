@@ -6,7 +6,6 @@ const routes = {
   "/services": "./pages/services.html",
   "/driver": "./pages/driver.html",
   "/prices": "./pages/prices.html",
-  "/carrera": "./pages/carrera.html",
   "/faq": "./pages/faq.html",
   "/auth-user": "./pages/auth-users.html",
   "/contact": "./pages/contact.html",
@@ -21,7 +20,9 @@ const router = new Router(routes);
 window.addEventListener("scroll", function () {
   var navBar = document.getElementById("navbar");
   navBar.classList.toggle("sticky", this.window.scrollY > 0);
-})
+});
+
+
 
 function showLogin() {
   const formBox = document.querySelector('.form-box');

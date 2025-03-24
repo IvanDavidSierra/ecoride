@@ -568,8 +568,8 @@ h4 {
 }
 /* Log-in/Sign-in styles */
 
-.login-background{
-    height: 931px;
+.login-background {
+  height: 1050px;
     width: 100%;
     background-image: url(../assets/img/carro-paisaje.jpg);
     background-position: center;
@@ -625,7 +625,8 @@ h4 {
 }
 
 .login-form .input-label,
-.signup-form .input-label{
+.signup-form .input-label,
+.form-box-contact .input-label{
     font-size: 14pt;
     font-weight: bold;
     letter-spacing: 2px; 
@@ -633,7 +634,8 @@ h4 {
 }
 
 .login-form .input-field,
-.signup-form .input-field{
+.signup-form .input-field,
+.form-box-contact .input-field{
     width: 100%;
     border-radius: 30px;
     padding: 3%;
@@ -656,11 +658,24 @@ h4 {
     font-size: 15pt;
     width: 100%;
     margin: 0 auto;
-}
-
-.button-form:hover{
-    color: black;
-}
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .carga {
+    border: 3px solid #ffffff; 
+    border-top: 3px solid #000000;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+    display: none;
+  }
+  .button-form:hover {
+    border: #000000 2px solid;
+  }
 
 .login-form a,
 .signup-form a {
@@ -682,6 +697,7 @@ h4 {
 
 .signup-form{
     padding: 5%;
+    margin-top: 1%;
 }
 
 .checkbox-group {
@@ -789,8 +805,126 @@ table {
   animation: fadeOut 1s ease-in-out;
 }
 
-html {
-  scroll-behavior: smooth;
+
+.contact{
+  width: 100%;
+  height: 1000px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+}
+
+.contact::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1000px;
+  background: url('../assets/img/recarga-carro-home.jpg');
+  background-size: cover;
+  opacity: 0.6; /* 60% */
+  z-index: -1;
+}
+
+.text-contact{
+  margin-top: 30%;
+  margin-left: 25%;
+  display: flex;
+  flex-direction: column;
+}
+
+.text-contact h1{
+  font-size: 42pt;
+  margin-right: 20%;
+  margin-bottom: 5%;
+}
+
+.text-contact p{
+  font-size: 22pt;
+  font-weight: bold;
+  margin-bottom: 5%;
+  margin-right: 20%;
+}
+
+.text-contact .social-nets{
+  font-weight: normal;
+}
+
+.form-box-contact{
+  display: flex;
+  flex-direction: column;
+  margin-top: 30%;
+  background-color: #FFFFFF;
+  border-radius: 40px;
+  width: 60%;
+  padding: 5%;
+  margin-bottom: 10%;
+}
+
+.form-footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.form-box-contact .button-form{
+  margin-left: 40%;
+  width: 20%;
+}
+
+.form-box-contact textarea{
+  width: 300px;
+  height: 150px;
+  resize: none;
+  overflow: auto;
+}
+.message-copy{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Accesibilidad */
+.boton-accesibilidad {
+  position: fixed;
+  top: 50%;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+  transform: translateY(-50%);
+}
+
+.boton-accesibilidad button {
+  background-color: #000000;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.boton-accesibilidad button:hover {
+  background-color: #12e821;
+}
+
+body.contraste-alto {
+  background-color: black !important;
+  color: yellow !important;
+}
+
+body.contraste-alto a {
+  color: cyan !important;
+}
+.modo-contraste {
+  filter: invert(1) hue-rotate(180deg);
+  background-color: black !important;
+  color: rgb(255, 0, 0) !important;
 }
   
   @keyframes fadeIn {
@@ -814,6 +948,11 @@ html {
       transform: rotateX(0);
     }
   }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
 
 .form-container {
   position: absolute;
@@ -829,8 +968,9 @@ html {
   flex-direction: column;
 }
 
-.form-container .input-field, .form-container .button-form {
-    margin-bottom: 15px;
+.form-container .input-field,
+.form-container .button-form {
+  margin-bottom: 2%;
 }
 
 .login-active .form-container:nth-child(2) {
@@ -855,10 +995,50 @@ html {
   }
   
   /* Cuando está activo el registro, el botón Registrarse es negro */
-  .form-box.signup-active #register-btn {
+.form-box.signup-active #register-btn {
     color: #000000;
     border-bottom: 4px solid black;
-  }
+}
+
+#mi_mapa {
+  height: 800px; 
+  width: 100%; 
+  border-radius: 70%;
+}
+.containers {
+  border: 2px solid #333; /* Borde oscuro */
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center; /* Centrar el texto */
+}
+.containers h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrar elementos del formulario */
+}
+
+.form label {
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+  text-align: center; /* Centrar texto de las etiquetas */
+}
+
+.form input[type="text"] {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 80%; /* Ancho del campo de entrada */
+  text-align: center; /* Centrar texto dentro del input */
+}
+
 
   /* home styles - Responsividad */
 

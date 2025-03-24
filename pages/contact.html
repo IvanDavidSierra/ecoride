@@ -1,28 +1,45 @@
-<h1>Contácto para resolver tus dudas</h1>
-<p>
-  Déjanos un mensjae con tu petición, también puedes contactarnos al siguiente
-  número
-</p>
-<i><p>+57 000 0000</p></i>
-<i><p>info@ecoride.com</p></i>
-<i><p>Bogotá, Colombia</p></i>
+<div class="contact">
+  <div class="text-contact">
+    <h1>Contáctanos para resolver tus <span class="green">dudas.</span></h1>
+    <p class>
+      Déjanos un mensaje con tu petición, también puedes contactarnos por los
+      siguientes medios:
+    </p>
+    <p class="social-nets">
+      <i class="fa-solid fa-phone" style="color: #000000"></i>
+      +57 000 0000
+    </p>
+    <p class="social-nets">
+      <i class="fa-solid fa-envelope" style="color: #000000"></i>
+      info@ecoride.com
+    </p>
+    <p class="social-nets">
+      <i class="fa-solid fa-building" style="color: #000000"></i>
+      Bogotá, Colombia
+    </p>
+  </div>
 
-<form action="POST">
-  <label for="name">Tu nombre</label>
-  <input type="text" placeholder="Nombre" />
+  <form class="form-box-contact">
+    <label for="name" class="input-label">TU NOMBRE</label>
+    <input type="text" placeholder="Nombre" class="input-field" />
 
-  <label for="mail">Tu correo</label>
-  <input type="email" name="mail" id="mail" placeholder="nombre@mail.com" />
+    <label for="mail" class="input-label">TU CORREO</label>
+    <input type="email" name="mail" id="mail" placeholder="nombre@mail.com" class="input-field"/>
 
-  <label for="message">Tu mensaje</label>
-  <textarea name="message" id="message" placeholder="Mensaje"></textarea>
+    <label for="message" class="input-label">TU MENSAJE</label>
+    <textarea name="message" id="message" placeholder="Mensaje"
+    class="input-field"></textarea>
 
-  <input
-    type="checkbox"
-    name="message-copy"
-    id="message-copy"
-    value="message-copy"
-  />
-  <label for="message-copy">Enviarme un copia</label>
-  <button type="submit">Enviar</button>
-</form>
+    <div class="form-footer">    
+      <label for="message-copy" class="message-copy">    
+        <input
+        type="checkbox"
+        name="message-copy"
+        id="message-copy"
+        value="message-copy"
+        class="checkbox-contact"/>Enviarme un copia
+      </label>
+    <button type="submit" class="button-form">Enviar</button>
+  </div>
+  </form>
+</div>

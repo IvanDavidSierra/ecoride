@@ -4,6 +4,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  sendPasswordResetEmail
 } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 import {
   getFirestore,
@@ -55,7 +56,7 @@ const mensajeError = (isValid, errorElementId) => {
   errorElement.style.display = isValid ? "none" : "block";
   errorElement.style.color = "red";
   errorElement.style.fontSize = "10pt";
-  formBox.style.height = "650px";
+  formBox.style.height = "750px";
 }
 
 document.addEventListener("click", function (e) {
@@ -68,6 +69,10 @@ document.addEventListener("click", function (e) {
     case "signInButton":
       e.preventDefault();
       loginUsers();
+      break;
+    case "forgotPassword":
+      e.preventDefault();
+      forgotPassword();
       break;
   }
 });
@@ -164,11 +169,38 @@ function registerUsers() {
       });
 }
 
+function forgotPassword(){
+  const email = document.querySelector("#mailLogin").value;
+  forgotPassword.addEventListener("click", function() {
+    const email = emailInput.value.trim();
+  
+    if (email === "") {
+      alert("Por favor ingresa tu correo electrónico para recuperar la contraseña.");
+      return;
+    }
+  
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        alert("Te hemos enviado un enlace para restablecer tu contraseña al correo proporcionado.");
+      })
+      .catch((error) => {
+        console.error("Error al enviar el correo de restablecimiento:", error);
+        if (error.code === "auth/invalid-email") {
+          alert("El correo ingresado no es válido.");
+        } else if (error.code === "auth/user-not-found") {
+          alert("No existe una cuenta con este correo.");
+        } else {
+          alert("Error al enviar el correo de restablecimiento.");
+        }
+      });
+  });
+}
 function loginUsers() {
   const emailInput = document.querySelector("#mailLogin");
   const passwordInput = document.querySelector("#passwordLogin");
   const rememberMe = document.querySelector("#remember").checked;
   const carga = document.getElementById("carga");
+
   carga.style.display = 'block';
 
   const email = emailInput.value;
@@ -208,10 +240,10 @@ function loginUsers() {
 
 function mostrarMensaje(isValid, tipo, emailInput, passwordInput) {
   if (isValid) {
-    mensajeExitoso(true, tipo); // Éxito: muestra mensaje verde
+    mensajeExitoso(true, tipo);
   } else {
     cambiarClase(emailInput, false);
     cambiarClase(passwordInput, false);
-    mensajeError(false, tipo); // Error: muestra mensaje rojo
+    mensajeError(false, tipo); 
   }
 }

@@ -50,7 +50,6 @@ class Router {
             app.classList.remove("fade-out");
             app.classList.add("transition");
 
-            // Inicializar el mapa después de cargar el contenido
             initMap();
 
             setTimeout(() => {
