@@ -6,6 +6,7 @@ const routes = {
   "/services": "./pages/services.html",
   "/driver": "./pages/driver.html",
   "/prices": "./pages/prices.html",
+  "/carrera": "./pages/carrera.html",
   "/faq": "./pages/faq.html",
   "/auth-user": "./pages/auth-users.html",
   "/contact": "./pages/contact.html",
