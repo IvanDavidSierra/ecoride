@@ -21,7 +21,44 @@
           <li><a href="/services" data-link>Servicios</a></li>
           <li><a href="/driver" data-link>Conduce</a></li>
           <li><a href="/prices" data-link>Precios</a></li>
-          <li><a href="/carrera" data-link>carrera</a></li>
+          <i class="fa-solid fa-user profile-icon" style="color: #12e821;" onclick="toggleProfileMenu()"></i>
+          <div class="sub-menu-profile" id="subMenu">
+            <div class="sub-menu">
+              <div class="user-info">
+                        <h2>¡Bienvenido, Ivan Sierra!</h2>
+              </div>
+              <hr>
+              <a href="/app" class="sub-menu-link" data-link>
+                    <i class="fa-solid fa-car-side" style="color: #000000;"></i>
+                    <p>Pedir servicio</p>
+                    <span>></span>
+              </a>
+              <a href="" class="sub-menu-link">
+                  <i class="fa-solid fa-user " style="color: #000000;"></i>
+                  <p>Ver perfil</p>
+                  <span>></span>
+              </a>
+              <a class="sub-menu-link">
+                <i class="fa-solid fa-right-from-bracket" style="color: #000000;" ></i>
+                <p style="cursor: pointer;" id="logout">Cerrar sesión</p>
+                <span>></span>
+              </a>
+            </div>
+          </div>
+
+          <div class="sub-menu-profile" id="subMenuNoAccount">
+            <div class="sub-menu">
+              <div class="user-info">
+                        <h2>No has iniciado sesión.</h2>
+              </div>
+              <hr>
+              <a href="/auth-user" class="sub-menu-link" data-link>
+                  <i class="fa-solid fa-user " style="color: #000000;"></i>
+                  <p>Unirse a EcoRide</p>
+                  <span>></span>
+              </a>
+            </div>
+          </div>
         </ul>
       </div>
       </nav>

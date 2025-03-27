@@ -51,10 +51,11 @@
   color: inherit;
   cursor: pointer;
   position: relative;
+  font-size: 1.5em;
 }
 
 .navbar .logo {
-  width: 12%;
+  width: 14%;
 }
 
 .navbar ul li a::after {
@@ -85,6 +86,85 @@
 .navbar.sticky ul li a::after {
   background: white;
 }
+
+.sub-menu-profile {
+  position: absolute;
+  top: 100%;
+  right: 10%;
+  width: 320px;
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.5s;
+}
+
+.sub-menu-profile.open-menu{
+  max-height: 400px;
+}
+
+.sub-menu {
+  background: #fff;
+  padding: 5%;
+  margin: 3%;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px #000000;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-info h2 {
+  font-weight: 500;
+}
+.profile-icon {
+  font-size: 35pt;
+  margin-left: 10%;
+  border: 2px solid #12e821;
+  border-radius: 50%;
+  padding: 2%;
+  cursor: pointer;
+}
+
+.sub-menu hr {
+  border: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #ccc;
+  margin: 15px 0;
+}
+
+.sub-menu-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  margin: 12px 0;
+}
+
+.sub-menu-link p {
+  width: 100%;
+}
+
+.sub-menu-link i {
+  padding: 8px;
+  margin-right: 10px;
+}
+
+.sub-menu-link span{
+  font-size: 22px;
+}
+
+.sub-menu-link:hover span{
+  transform: translateX(5px);
+}
+
+.sub-menu-link:hover p{
+  font-weight: 600;
+}
+
+
+
 
 footer {
   width: 100%;
@@ -570,10 +650,10 @@ h4 {
 
 .login-background {
   height: 1050px;
-    width: 100%;
-    background-image: url(../assets/img/carro-paisaje.jpg);
-    background-position: center;
-    background-size: cover;
+  width: 100%;
+  background-image: url(../assets/img/carro-paisaje.jpg);
+  background-position: center;
+  background-size: cover;
 }
 
 .login-background h1 {
@@ -585,15 +665,15 @@ h4 {
   color: white;
 }
 
-.form-box{
-    width: 577px;
-    height: 650px;
-    position: relative;
-    margin: 1% auto;
-    background-color: #fff;
-    padding: 5px;
-    border-radius: 10px;
-    overflow: hidden;
+.form-box {
+  width: 577px;
+  height: 650px;
+  position: relative;
+  margin: 1% auto;
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .button-box {
@@ -626,21 +706,21 @@ h4 {
 
 .login-form .input-label,
 .signup-form .input-label,
-.form-box-contact .input-label{
-    font-size: 14pt;
-    font-weight: bold;
-    letter-spacing: 2px; 
-    margin-bottom: 3%;
+.form-box-contact .input-label {
+  font-size: 14pt;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 3%;
 }
 
 .login-form .input-field,
 .signup-form .input-field,
-.form-box-contact .input-field{
-    width: 100%;
-    border-radius: 30px;
-    padding: 3%;
-    border: 1px solid #c0b4b4;
-    margin-bottom: 3%;
+.form-box-contact .input-field {
+  width: 100%;
+  border-radius: 30px;
+  padding: 3%;
+  border: 1px solid #c0b4b4;
+  margin-bottom: 3%;
 }
 
 .login-form {
@@ -648,34 +728,34 @@ h4 {
   padding: 10%;
 }
 
-.button-form{
-    background-color: #12E821;
-    padding: 2%;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    color: white;
-    font-size: 15pt;
-    width: 100%;
-    margin: 0 auto;
-    gap: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .carga {
-    border: 3px solid #ffffff; 
-    border-top: 3px solid #000000;
-    border-radius: 50%;
-    width: 16px;
-    height: 16px;
-    animation: spin 1s linear infinite;
-    display: none;
-  }
-  .button-form:hover {
-    border: #000000 2px solid;
-  }
+.button-form {
+  background-color: #12e821;
+  padding: 2%;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  color: white;
+  font-size: 15pt;
+  width: 100%;
+  margin: 0 auto;
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carga {
+  border: 3px solid #ffffff;
+  border-top: 3px solid #000000;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+  display: none;
+}
+.button-form:hover {
+  border: #000000 2px solid;
+}
 
 .login-form a,
 .signup-form a {
@@ -685,8 +765,8 @@ h4 {
 }
 
 .names-user {
-    display: flex;
-    gap: 10px; /* Espacio entre los dos campos */
+  display: flex;
+  gap: 10px; /* Espacio entre los dos campos */
 }
 
 .input-group {
@@ -695,20 +775,20 @@ h4 {
   flex: 1;
 }
 
-.signup-form{
-    padding: 5%;
-    margin-top: 1%;
+.signup-form {
+  padding: 5%;
+  margin-top: 1%;
 }
 
 .checkbox-group {
   margin-bottom: 2%;
 }
 
-.checkbox{
-    display: flex;
-    align-items: center; /* Alinea verticalmente */
-    gap: 8px; /* Espacio entre checkbox y texto */
-    margin-bottom: 10px; /* Separación opcional */
+.checkbox {
+  display: flex;
+  align-items: center; /* Alinea verticalmente */
+  gap: 8px; /* Espacio entre checkbox y texto */
+  margin-bottom: 10px; /* Separación opcional */
 }
 input[type="checkbox"],
 input[type="checkbox"] {
@@ -745,56 +825,53 @@ input[type="checkbox"] {
 }
 
 table {
-    width: 70%; /* Reducir el ancho de la tabla */
-    margin: 20px auto; /* Centrar la tabla horizontalmente */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.438);
-    border-collapse: collapse; /* Asegurar que los bordes estén unidos */
-    
-  }
-  
-  /* Estilos para las celdas de encabezado y datos */
-  table th, table td {
-    padding: 60px 60px; /* Aumentar el padding vertical para mayor altura */
-    text-align: center;
-    border: 1px solid #00000092;
-  }
-  
-  /* Estilos para los encabezados de la tabla */
-  table th {
-    background-color: #908e8e7f;
-    color: rgb(0, 0, 0);
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 1.5em; /* Aumentar el tamaño de la fuente */
-  }
-  
-  /* Efecto hover para las filas */
-  table tbody tr:hover {
-    background-color: #e8e8e89f;
-    transition: background-color 0.2s ease;
-  }
-  
- 
-  
-  /* Estilos para la primera columna (características) */
-  table td:first-child {
-    font-weight: bold;
-    background-color: #ffffff;
-    font-size: 1.5em;
-  }
-  
-  /* Estilos para las celdas de los planes (Basic, Silver, Gold) */
-  table tbody tr td:not(:first-child) {
-    
-    color: #050505;
-    font-weight: bold;
-  }
-  
-  /* Estilos para la última columna (Gold) */
-  table tbody tr td:last-child {
-    font-weight: bold;
-    color: #000000;
-  }
+  width: 70%; /* Reducir el ancho de la tabla */
+  margin: 20px auto; /* Centrar la tabla horizontalmente */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.438);
+  border-collapse: collapse; /* Asegurar que los bordes estén unidos */
+}
+
+/* Estilos para las celdas de encabezado y datos */
+table th,
+table td {
+  padding: 60px 60px; /* Aumentar el padding vertical para mayor altura */
+  text-align: center;
+  border: 1px solid #00000092;
+}
+
+/* Estilos para los encabezados de la tabla */
+table th {
+  background-color: #908e8e7f;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.5em; /* Aumentar el tamaño de la fuente */
+}
+
+/* Efecto hover para las filas */
+table tbody tr:hover {
+  background-color: #e8e8e89f;
+  transition: background-color 0.2s ease;
+}
+
+/* Estilos para la primera columna (características) */
+table td:first-child {
+  font-weight: bold;
+  background-color: #ffffff;
+  font-size: 1.5em;
+}
+
+/* Estilos para las celdas de los planes (Basic, Silver, Gold) */
+table tbody tr td:not(:first-child) {
+  color: #050505;
+  font-weight: bold;
+}
+
+/* Estilos para la última columna (Gold) */
+table tbody tr td:last-child {
+  font-weight: bold;
+  color: #000000;
+}
 
 /* animaciones */
 .transition {
@@ -805,8 +882,7 @@ table {
   animation: fadeOut 1s ease-in-out;
 }
 
-
-.contact{
+.contact {
   width: 100%;
   height: 1000px;
   display: grid;
@@ -821,66 +897,66 @@ table {
   left: 0;
   width: 100%;
   height: 1000px;
-  background: url('../assets/img/recarga-carro-home.jpg');
+  background: url("../assets/img/recarga-carro-home.jpg");
   background-size: cover;
   opacity: 0.6; /* 60% */
   z-index: -1;
 }
 
-.text-contact{
+.text-contact {
   margin-top: 30%;
   margin-left: 25%;
   display: flex;
   flex-direction: column;
 }
 
-.text-contact h1{
+.text-contact h1 {
   font-size: 42pt;
   margin-right: 20%;
   margin-bottom: 5%;
 }
 
-.text-contact p{
+.text-contact p {
   font-size: 22pt;
   font-weight: bold;
   margin-bottom: 5%;
   margin-right: 20%;
 }
 
-.text-contact .social-nets{
+.text-contact .social-nets {
   font-weight: normal;
 }
 
-.form-box-contact{
+.form-box-contact {
   display: flex;
   flex-direction: column;
   margin-top: 30%;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 40px;
   width: 60%;
   padding: 5%;
   margin-bottom: 10%;
 }
 
-.form-footer{
+.form-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
 }
 
-.form-box-contact .button-form{
+.form-box-contact .button-form {
   margin-left: 40%;
   width: 20%;
 }
 
-.form-box-contact textarea{
+.form-box-contact textarea {
   width: 300px;
   height: 150px;
   resize: none;
   overflow: auto;
 }
-.message-copy{
+.message-copy {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -926,33 +1002,36 @@ body.contraste-alto a {
   background-color: black !important;
   color: rgb(255, 0, 0) !important;
 }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: rotateX(-10deg);
-    }
-    to {
-      opacity: 1;
-      transform: rotateX(0);
-    }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: rotateX(-10deg);
   }
-  
-  @keyframes fadeOut {
-    from {
-      opacity: 1;
-      transform: rotateX(-10deg);
-    }
-    to {
-      opacity: 0;
-      transform: rotateX(0);
-    }
+  to {
+    opacity: 1;
+    transform: rotateX(0);
   }
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: rotateX(-10deg);
   }
-  
+  to {
+    opacity: 0;
+    transform: rotateX(0);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 .form-container {
   position: absolute;
@@ -990,19 +1069,19 @@ body.contraste-alto a {
 }
 
 .form-box.login-active #login-btn {
-    color: black;
-    border-bottom: 4px solid black;
-  }
-  
-  /* Cuando está activo el registro, el botón Registrarse es negro */
+  color: black;
+  border-bottom: 4px solid black;
+}
+
+/* Cuando está activo el registro, el botón Registrarse es negro */
 .form-box.signup-active #register-btn {
-    color: #000000;
-    border-bottom: 4px solid black;
+  color: #000000;
+  border-bottom: 4px solid black;
 }
 
 #mi_mapa {
-  height: 800px; 
-  width: 100%; 
+  height: 800px;
+  width: 100%;
   border-radius: 70%;
 }
 .containers {
@@ -1039,149 +1118,136 @@ body.contraste-alto a {
   text-align: center; /* Centrar texto dentro del input */
 }
 
+/* home styles - Responsividad */
 
-  /* home styles - Responsividad */
+@media screen and (max-width: 1024px) {
+  .info-ecoride h1 {
+    font-size: 48pt;
+  }
+  .info-ecoride p {
+    font-size: 18pt;
+  }
+  .info-ecoride button a {
+    font-size: 16pt;
+  }
+  .container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero-content {
+    padding-left: 0;
+  }
+  .hero-content p {
+    margin-right: 0;
+  }
+  .hero-content-img img {
+    max-width: 80%;
+  }
+  .articles-plan {
+    grid-template-columns: 1fr 1fr;
+    height: auto;
+  }
+}
 
-  @media screen and (max-width: 1024px) {
-      .info-ecoride h1 {
-          font-size: 48pt;
-      }
-      .info-ecoride p {
-          font-size: 18pt;
-      }
-      .info-ecoride button a {
-          font-size: 16pt;
-      }
-      .container {
-          grid-template-columns: 1fr;
-          text-align: center;
-      }
-      .hero-content {
-          padding-left: 0;
-      }
-      .hero-content p {
-          margin-right: 0;
-      }
-      .hero-content-img img {
-          max-width: 80%;
-      }
-      .articles-plan {
-          grid-template-columns: 1fr 1fr;
-          height: auto;
-      }
+@media screen and (max-width: 768px) {
+  .info-ecoride {
+    height: auto;
+    padding: 10% 5%;
+    text-align: center;
   }
-  
-  @media screen and (max-width: 768px) {
-      .info-ecoride {
-          height: auto;
-          padding: 10% 5%;
-          text-align: center;
-      }
-      .info-ecoride h1 {
-          font-size: 36pt;
-      }
-      .info-ecoride p {
-          font-size: 16pt;
-      }
-      .info-ecoride button {
-          padding: 15px 25px;
-      }
-      .container {
-          grid-template-columns: 1fr;
-      }
-      .hero-content h2, .hero-content h4 {
-          font-size: 32pt;
-      }
-      .hero-content p {
-          font-size: 16pt;
-      }
-      .articles-plan {
-          grid-template-columns: 1fr;
-      }
-      .articles-plan img {
-          width: 90%;
-      }
+  .info-ecoride h1 {
+    font-size: 36pt;
   }
-  
-  @media screen and (max-width: 480px) {
-      .info-ecoride h1 {
-          font-size: 28pt;
-      }
-      .info-ecoride p {
-          font-size: 14pt;
-      }
-      .info-ecoride button {
-          padding: 10px 20px;
-      }
-      .hero-content h2, .hero-content h4 {
-          font-size: 24pt;
-      }
-      .hero-content p {
-          font-size: 14pt;
-      }
-      .articles-plan p {
-          font-size: 16pt;
-      }
-      .button-services {
-          font-size: 14pt;
-          padding: 15px 20px;
-      }
+  .info-ecoride p {
+    font-size: 16pt;
   }
+  .info-ecoride button {
+    padding: 15px 25px;
+  }
+  .container {
+    grid-template-columns: 1fr;
+  }
+  .hero-content h2,
+  .hero-content h4 {
+    font-size: 32pt;
+  }
+  .hero-content p {
+    font-size: 16pt;
+  }
+  .articles-plan {
+    grid-template-columns: 1fr;
+  }
+  .articles-plan img {
+    width: 90%;
+  }
+}
 
-  #mi_mapa {
-    height: 800px; 
-    width: 100%; 
-    border-radius: 70%;
+@media screen and (max-width: 480px) {
+  .info-ecoride h1 {
+    font-size: 28pt;
+  }
+  .info-ecoride p {
+    font-size: 14pt;
+  }
+  .info-ecoride button {
+    padding: 10px 20px;
+  }
+  .hero-content h2,
+  .hero-content h4 {
+    font-size: 24pt;
+  }
+  .hero-content p {
+    font-size: 14pt;
+  }
+  .articles-plan p {
+    font-size: 16pt;
+  }
+  .button-services {
+    font-size: 14pt;
+    padding: 15px 20px;
+  }
+}
+
+#mi_mapa {
+  height: 800px;
+  width: 100%;
+  border-radius: 70%;
 }
 .containers {
-    border: 2px solid #333; /* Borde oscuro */
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center; /* Centrar el texto */
+  border: 2px solid #333; /* Borde oscuro */
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center; /* Centrar el texto */
 }
 .containers h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
 }
 .form {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centrar elementos del formulario */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrar elementos del formulario */
 }
 
 .form label {
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #555;
-    text-align: center; /* Centrar texto de las etiquetas */
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+  text-align: center; /* Centrar texto de las etiquetas */
 }
 
 .form input[type="text"] {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    width: 80%; /* Ancho del campo de entrada */
-    text-align: center; /* Centrar texto dentro del input */
-}
-.button-form {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.button-form:hover {
-    background-color: #0056b3;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 80%; /* Ancho del campo de entrada */
+  text-align: center; /* Centrar texto dentro del input */
 }
 
 /* Estilos para centrar el texto en la sección info-ecoride */
 .info-ecoride {
-    text-align: center;
+  text-align: center;
 }

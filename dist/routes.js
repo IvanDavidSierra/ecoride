@@ -52,6 +52,15 @@ class Router {
 
             initMap();
 
+            const noProfileBox = document.getElementById("subMenuNoAccount");
+            const accountBox = document.getElementById("subMenu");
+            if (noProfileBox) {
+              noProfileBox.classList.remove("open-menu");
+            }
+            if (accountBox) {
+              accountBox.classList.remove("open-menu");
+            }
+
             setTimeout(() => {
                 app.classList.remove("transition");
             }, 700);

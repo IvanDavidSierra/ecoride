@@ -1,3 +1,4 @@
+
 //Definicion de rutas
 const routes = {
   "/": "./pages/home.html",
@@ -23,8 +24,6 @@ window.addEventListener("scroll", function () {
   navBar.classList.toggle("sticky", this.window.scrollY > 0);
 });
 
-
-
 function showLogin() {
   const formBox = document.querySelector('.form-box');
   formBox.classList.add('login-active');
@@ -37,8 +36,16 @@ function showSignup() {
   formBox.classList.remove('login-active');
 }
 
-// Mostrar el formulario de inicio de sesión por defecto al cargar la página
-document.addEventListener('DOMContentLoaded', function() {
-  showLogin();
-});
+function toggleProfileMenu(){
+  if (localStorage.getItem("rememberMeUser") || sessionStorage.getItem("noRememberUser")){
+    const profileBox = document.getElementById("subMenu");
+    profileBox.classList.toggle("open-menu");
+  }else{
+    const noProfileBox = document.getElementById("subMenuNoAccount");
+    noProfileBox.classList.toggle("open-menu");
+    noProfileBox.style.display = "block";
+  }
+}
+
+
 
