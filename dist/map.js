@@ -1,3 +1,34 @@
+const PLANES = {
+  basic: {
+    precio: 2000,
+    maxKm: 1.99,
+    nombre: "Basic",
+    color: " #12E821", 
+    
+  },
+  silver: {
+    precio: 4000,
+    maxKm: 2.99,
+    nombre: "Silver",
+    color: " #12E821", 
+    
+  },
+  gold: {
+    precio: 10000,
+    maxKm: 3.99,
+    nombre: "Gold",
+    color: " #12E821",
+    
+  }
+};
+
+function determinarPlan(distanciaKm) {
+  if (distanciaKm <= PLANES.basic.maxKm) return PLANES.basic;
+  if (distanciaKm <= PLANES.silver.maxKm) return PLANES.silver;
+  if (distanciaKm <= PLANES.gold.maxKm) return PLANES.gold;
+  return null;
+}
+
 function initMap() {
   let mapContainer = document.getElementById("mi_mapa");
 
@@ -16,45 +47,75 @@ function initMap() {
 
   // Definir iconos personalizados
   let greenIcon = L.icon({
-    iconUrl: "./assets/img/leaf-green.png", // Ruta a la imagen del icono
-    shadowUrl: "./assets/img/leaf-shadow.png", // Ruta a la imagen de la sombra
-    iconSize: [38, 95], // Tamaño del icono
-    shadowSize: [50, 64], // Tamaño de la sombra
-    iconAnchor: [22, 94], // Punto de anclaje del icono
-    shadowAnchor: [4, 62], // Punto de anclaje de la sombra
-    popupAnchor: [-3, -76], // Punto de anclaje del popup
+    iconUrl: "./assets/img/leaf-green.png",
+    shadowUrl: "./assets/img/leaf-shadow.png",
+    iconSize: [38, 95],
+    shadowSize: [50, 64],
+    iconAnchor: [22, 94],
+    shadowAnchor: [4, 62],
+    popupAnchor: [-3, -76],
   });
 
   let redIcon = L.icon({
-    iconUrl: "./assets/img/leaf-red.png", // Ruta a la imagen del icono
-    shadowUrl: "./assets/img/leaf-shadow.png", // Ruta a la imagen de la sombra
-    iconSize: [38, 95], // Tamaño del icono
-    shadowSize: [50, 64], // Tamaño de la sombra
-    iconAnchor: [22, 94], // Punto de anclaje del icono
-    shadowAnchor: [4, 62], // Punto de anclaje de la sombra
-    popupAnchor: [-3, -76], // Punto de anclaje del popup
+    iconUrl: "./assets/img/leaf-red.png",
+    shadowUrl: "./assets/img/leaf-shadow.png",
+    iconSize: [38, 95],
+    shadowSize: [50, 64],
+    iconAnchor: [22, 94],
+    shadowAnchor: [4, 62],
+    popupAnchor: [-3, -76],
   });
 
   // Variables para almacenar los marcadores y la ruta
-  let marcadorPartida, marcadorLlegada, ruta;
+  let marcadorPartida = null;
+  let marcadorLlegada = null;
+  let ruta = null;
+
+  // Función para limpiar el mapa
+  function limpiarMapa() {
+    // Limpiar marcadores
+    if (marcadorPartida) {
+      map.removeLayer(marcadorPartida);
+      marcadorPartida = null;
+    }
+    if (marcadorLlegada) {
+      map.removeLayer(marcadorLlegada);
+      marcadorLlegada = null;
+    }
+    
+    // Limpiar ruta
+    if (ruta) {
+      map.removeLayer(ruta);
+      ruta = null;
+    }
+    
+    // Limpiar información mostrada
+    document.getElementById("distance").textContent = "0 km";
+    document.getElementById("plan-type").textContent = "-";
+    document.getElementById("estimated-price").textContent = "$0";
+    document.getElementById("distance-warning").style.display = "none";
+    
+    // Forzar actualización del mapa
+    map.invalidateSize();
+  }
 
   // Capturar el formulario
   document.getElementById("form").addEventListener("submit", function (e) {
-    e.preventDefault(); // Evitar que el formulario se envíe
+    e.preventDefault();
 
-    // Obtener las direcciones ingresadas por el usuario
-    let direccionPartida = document.getElementById("punto_partida").value;
-    let direccionLlegada = document.getElementById("punto_llegada").value;
+    let direccionPartida = document.getElementById("punto_partida").value.trim();
+    let direccionLlegada = document.getElementById("punto_llegada").value.trim();
 
-    // Geocodificar las direcciones y trazar la ruta
+    if (!direccionPartida || !direccionLlegada) {
+      alert("Por favor ingrese ambas direcciones.");
+      return;
+    }
+
+    // Limpiar el mapa antes de añadir nuevos elementos
+    limpiarMapa();
+
     Promise.all([geocodificar(direccionPartida), geocodificar(direccionLlegada)])
       .then(([coordsPartida, coordsLlegada]) => {
-        // Limpiar marcadores y ruta anteriores
-        if (marcadorPartida) map.removeLayer(marcadorPartida);
-        if (marcadorLlegada) map.removeLayer(marcadorLlegada);
-        if (ruta) map.removeLayer(ruta);
-
-        // Añadir nuevos marcadores
         marcadorPartida = L.marker(coordsPartida, { icon: greenIcon })
           .addTo(map)
           .bindPopup("Punto de partida");
@@ -63,8 +124,12 @@ function initMap() {
           .addTo(map)
           .bindPopup("Punto de llegada");
 
-        // Obtener y dibujar la ruta
-        obtenerRuta(coordsPartida, coordsLlegada, map);
+        obtenerRuta(coordsPartida, coordsLlegada, map, function(nuevaRuta) {
+          ruta = nuevaRuta;
+          if (nuevaRuta) {
+            map.fitBounds(ruta.getBounds());
+          }
+        });
       })
       .catch((error) => {
         console.error("Error al geocodificar las direcciones:", error);
@@ -72,68 +137,98 @@ function initMap() {
       });
   });
 
-  // Si el mapa no se renderiza bien, forzar la actualización
   setTimeout(() => {
     map.invalidateSize();
   }, 300);
 }
 
-// Función para geocodificar una dirección usando Nominatim
 function geocodificar(direccion) {
-  let url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
-    direccion
-  )}`;
+  let url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(direccion)}`;
 
   return fetch(url)
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+      return response.json();
+    })
     .then((data) => {
-      if (data.length > 0) {
-        let lat = parseFloat(data[0].lat);
-        let lon = parseFloat(data[0].lon);
-        return [lat, lon]; // Devuelve las coordenadas [lat, lon]
+      if (Array.isArray(data) && data.length > 0) {
+        return [parseFloat(data[0].lat), parseFloat(data[0].lon)];
       } else {
         throw new Error("Dirección no encontrada");
       }
     });
 }
 
-// Función para obtener la ruta utilizando OSRM
-function obtenerRuta(puntoPartida, puntoLlegada, map) {
-  // Formato de las coordenadas para OSRM: [lon, lat]
-  let start = `${puntoPartida[1]},${puntoPartida[0]}`; // lon, lat
-  let end = `${puntoLlegada[1]},${puntoLlegada[0]}`; // lon, lat
-
-  // URL del servicio de OSRM
+function obtenerRuta(puntoPartida, puntoLlegada, map, callback) {
+  let start = `${puntoPartida[1]},${puntoPartida[0]}`;
+  let end = `${puntoLlegada[1]},${puntoLlegada[0]}`;
   let url = `https://router.project-osrm.org/route/v1/driving/${start};${end}?overview=full&geometries=geojson`;
 
-  // Realizar la solicitud a la API de OSRM
   fetch(url)
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+      return response.json();
+    })
     .then((data) => {
-      if (data.routes && data.routes.length > 0) {
-        // Extraer la geometría de la ruta
+      if (Array.isArray(data.routes) && data.routes.length > 0) {
         let rutaGeoJSON = data.routes[0].geometry;
-
-        // Dibujar la ruta en el mapa
-        ruta = L.geoJSON(rutaGeoJSON, {
-          style: {
-            color: "#12E821", // Color de la línea
-            weight: 5, // Grosor de la línea
-            opacity: 0.7, // Opacidad de la línea
-          },
+        let distanciaMetros = data.routes[0].distance;
+        let distanciaKm = (distanciaMetros / 1000).toFixed(2);
+        
+        const plan = determinarPlan(distanciaKm);
+        const warningElement = document.getElementById("distance-warning");
+        
+        // Actualizar UI
+        document.getElementById("distance").textContent = `${distanciaKm} km`;
+        
+        if (!plan) {
+          // Distancia excedida
+          document.getElementById("plan-type").textContent = "No disponible";
+          document.getElementById("estimated-price").textContent = "No disponible";
+          warningElement.style.display = "block";
+          
+          // Dibujar ruta en rojo para indicar error
+          let rutaError = L.geoJSON(rutaGeoJSON, {
+            style: { 
+              color: "#FF0000",
+              weight: 5,
+              opacity: 0.7
+            }
+          }).addTo(map);
+          
+          return callback(rutaError);
+        }
+        
+        // Mostrar información del plan
+        warningElement.style.display = "none";
+        document.getElementById("plan-type").textContent = plan.nombre;
+        document.getElementById("plan-type").style.color = plan.color;
+        document.getElementById("estimated-price").textContent = `$${plan.precio.toLocaleString()}`;
+        
+        // Dibujar ruta con el color del plan
+        let nuevaRuta = L.geoJSON(rutaGeoJSON, {
+          style: { 
+            color: plan.color,
+            weight: 5,
+            opacity: 0.7
+          }
         }).addTo(map);
+        
+        callback(nuevaRuta);
       } else {
         console.error("No se pudo obtener la ruta.");
+        callback(null);
       }
     })
     .catch((error) => {
       console.error("Error al obtener la ruta:", error);
+      callback(null);
     });
 }
 
-// Detectar cuándo se ha cargado carrera.html dinámicamente
+// Inicialización condicional del mapa
 document.addEventListener("DOMContentLoaded", () => {
-  if (window.location.pathname === "/carrera") {
+  if (window.location.href.includes("carrera")) {
     initMap();
   }
 });

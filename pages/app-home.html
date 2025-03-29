@@ -1,18 +1,28 @@
-
-<section  class="services-title">
-  <div id="mi_mapa"></div>  <!-- mapa -->
+<section class="mapa-section">
+  <div id="mi_mapa"></div>
   <section class="containers">
       <h2>inicio de carrera</h2>
       <div>
-        <form id="form" class="form">     
-          <label for="punto_partida">Punto de partida:</label>
-          <input type="text" id="punto_partida" />
-          <label for="punto_llegada">Punto de llegada:</label>
-          <input type="text" id="punto_llegada" />
-          <button type="submit" id="btnSend" class="button-form">
-            iniciar
-          </button>
-        </form>      
+          <form id="form" class="form">
+              <label for="punto_partida">Punto de partida:</label>
+              <input type="text" id="punto_partida" required>
+              
+              <label for="punto_llegada">Punto de llegada:</label>
+              <input type="text" id="punto_llegada" required>
+              
+              <!-- Sección de información automática -->
+              <div id="price-display" class="price-display">
+                  <p>Distancia calculada: <span id="distance">0 km</span></p>
+                  <p>Tipo de plan: <span id="plan-type">-</span></p>
+                  <p>Precio total: <span id="estimated-price">$0</span></p>
+                  <p id="distance-warning" class="warning" style="color: red; display: none;">
+                    ¡La distancia excede nuestros límites de servicio!
+                  </p>
+              </div>
+              
+              <button type="submit" id="btnSend" class="button-form">
+                  Calcular ruta
+              </button>
+          </form>      
       </div>
-    </section>
-</section>
+  </section>

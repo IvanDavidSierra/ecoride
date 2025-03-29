@@ -90,6 +90,7 @@ function registerUsers() {
   const email = document.getElementById("email");
   const password = document.getElementById("password-register");
   const confirmPassword = document.getElementById("confirm-password");
+  const typeUser = document.getElementById("driver-check").checked;
   const terms = document.getElementById("terms");
 
   // Validación de campos
@@ -134,43 +135,42 @@ function registerUsers() {
   const db = getFirestore();
 
   createUserWithEmailAndPassword(auth, email.value, password.value)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      const userData = {
-        firstName: name.value,
-        lastName: lastName.value,
-        email: email.value,
-      };
-      mensajeError(true, "systemError");
-      mensajeError(true, "emailInUse");
-      mensajeExitoso(true, "success");
-      const docRef = doc(db, "users", user.uid);
-      setDoc(docRef, userData)
-        .then(() => {
-          carga.style.display = "none";
-          mensajeError(true, "systemError");
-          mensajeExitoso(true, "success");
-          sessionStorage.setItem("noRememberUser", user.uid);
-          setTimeout(() => {
-            router.navigate("/app");
-          }, 800);
-        })
-        .catch((error) => {
-          carga.style.display = "none";
-          mensajeError(false, "systemError");
-        });
-    })
-    .catch((error) => {
-      carga.style.display = "none";
-      var errorCode = error.code;
-      if (errorCode == "auth/email-alreday-in-use") {
-        carga.style.display = "none";
-        mensajeError(false, "emailInUse");
-      } else {
-        carga.style.display = "none";
+  .then((userCredential) => {
+    const user = userCredential.user;
+    const userData = {
+      firstName: name.value,
+      lastName: lastName.value,
+      email: email.value,
+    };
+    mensajeError(true, "systemError");
+    mensajeError(true, "emailInUse"); 
+    mensajeExitoso(true, "success");
+    const docRef = doc(db, "users", user.uid);
+    setDoc(docRef, userData)
+      .then(() => {
+        carga.style.display = 'none';
+        mensajeError(true, "systemError");
+        mensajeExitoso(true, "success");
+        setTimeout(() => {
+          router.navigate("/app");
+        }, 800);
+      })
+      .catch((error) => {
+        carga.style.display = 'none';
         mensajeError(false, "systemError");
-      }
-    });
+      });
+  })
+  .catch((error) => {
+    carga.style.display = 'none';
+    var errorCode = error.code;
+    if (errorCode == "auth/email-alreday-in-use") {
+      carga.style.display = 'none';
+      mensajeError(false, "emailInUse"); 
+    } else {
+      carga.style.display = 'none';
+      mensajeError(false, "systemError");
+    }
+  });
 }
 
 function loginUsers() {
