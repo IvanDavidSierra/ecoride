@@ -55,7 +55,7 @@
 }
 
 .navbar .logo {
-  width: 14%;
+  width: 12%;
 }
 
 .navbar ul li a::after {
@@ -439,7 +439,8 @@ h4 {
     margin-right: 0;
   }
   .hero-content-img img {
-    max-width: 80%;
+    max-width: 100%;
+    height: auto;
   }
   .articles-plan {
     grid-template-columns: 1fr 1fr;
@@ -449,12 +450,12 @@ h4 {
 
 @media screen and (max-width: 768px) {
   .info-ecoride {
-    height: auto;
+    height: 20%;
     padding: 10% 5%;
     text-align: center;
   }
   .info-ecoride h1 {
-    font-size: 36pt;
+    font-size: 60pt;
   }
   .info-ecoride p {
     font-size: 16pt;
@@ -482,23 +483,29 @@ h4 {
 
 @media screen and (max-width: 480px) {
   .info-ecoride h1 {
-    font-size: 28pt;
+    font-size: 50pt;
   }
   .info-ecoride p {
-    font-size: 14pt;
+    font-size: 16pt;
+    text-align: justify;
   }
   .info-ecoride button {
     padding: 10px 20px;
   }
   .hero-content h2,
   .hero-content h4 {
-    font-size: 24pt;
+    font-size: 28pt;
   }
   .hero-content p {
     font-size: 14pt;
+    text-align: center;
+  }
+  .que-ofrecemos-info #text{
+    font-size: 20pt;
+
   }
   .articles-plan p {
-    font-size: 16pt;
+    font-size: 18pt;
   }
   .button-services {
     font-size: 14pt;
@@ -1118,150 +1125,800 @@ body.contraste-alto a {
   text-align: center; /* Centrar texto dentro del input */
 }
 
-/* home styles - Responsividad */
 
-@media screen and (max-width: 1024px) {
-  .info-ecoride h1 {
-    font-size: 48pt;
+/* Estilos para las migas de pan */
+.breadcrumbs-container {
+  background-color: #f8f9fa;
+  padding: 10px 20px;
+  margin: 0 auto 20px auto;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+}
+
+.breadcrumbs li {
+  display: inline-flex;
+  align-items: center;
+}
+
+.breadcrumbs a {
+  color: #12e821;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.breadcrumbs a:hover {
+  color: #0caa19;
+  text-decoration: underline;
+}
+
+.breadcrumbs .separator {
+  margin: 0 8px;
+  color: #6c757d;
+}
+
+.breadcrumbs .current-page {
+  font-weight: 600;
+  color: #343a40;
+}
+
+@media (max-width: 768px) {
+  .breadcrumbs-container {
+    padding: 8px 15px;
   }
-  .info-ecoride p {
-    font-size: 18pt;
+  
+  .breadcrumbs {
+    font-size: 12px;
   }
-  .info-ecoride button a {
-    font-size: 16pt;
+}
+/*Responsividad-------------------------------------------------------------------------->*/
+
+
+/* Escritorio grandes */
+@media (max-width: 1200px) {
+  /*Nav Responsivo Terminado*/
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    
   }
-  .container {
-    grid-template-columns: 1fr;
-    text-align: center;
+  
+  .navbar .logo {
+    position: relative;
+    top: -1.5rem;
+    right: 100px;
+    font-size: 30pt;
+
+   
   }
-  .hero-content {
-    padding-left: 0;
+  
+  .navbar ul li {
+    margin-left: 20px;
   }
-  .hero-content p {
-    margin-right: 0;
+  
+  .navbar ul li a {
+    font-size: 1.2em;
   }
-  .hero-content-img img {
-    max-width: 80%;
+  .profile-icon {
+    position: relative;
+    top: -1rem;
+    left: 150px;
+    font-size: 30pt;
   }
-  .articles-plan {
-    grid-template-columns: 1fr 1fr;
-    height: auto;
+  /*Submenu (Login) responsivo Terminado*/
+  .sub-menu-profile {
+    position: absolute; 
+    top: 20px; /* Ajusta según el tamaño del navbar */
+    right: 150px;
+    width: 280px;
+    display: block !important; /* Asegura visibilidad */
+    
+  }
+
+  .sub-menu {
+    padding: 4%;
+  }
+
+  .user-info h2 {
+    font-size: 16px;
+  }
+
+  .sub-menu-link p {
+    font-size: 14px;
+  }
+  /*Boton Accesibilidad Terminado*/
+  .boton-accesibilidad {
+    top: auto;
+    bottom: 250px;
+    right: 20px;
+    transform: none;
   }
 }
 
-@media screen and (max-width: 768px) {
-  .info-ecoride {
-    height: auto;
-    padding: 10% 5%;
-    text-align: center;
+/* Tablets Terminado*/ 
+@media  (min-width: 768px) and (max-width: 991px) {
+  .navbar {
+    padding: 10px 20px;
+    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
   }
-  .info-ecoride h1 {
+  
+  .navbar .logo {
+    position: absolute;
+    top: 20px;
+    left: 100px;
+    font-size: 14pt;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .navbar ul {
+
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+  
+  .navbar ul li {
+    margin-left: 0;
+  }
+  
+  .navbar ul li a {
+    font-size: 1em;
+  }
+  
+  .profile-icon {
+    position: absolute;
+    top: 40px;
+    left: 500px;
+    font-size: 24pt;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  }
+  /*Submenu*/
+  .sub-menu-profile {
+    position: absolute; 
+    top: 10px; 
+    left: 300px;
+    width: 280px;
+    display: block !important; /* Asegura visibilidad */
+    
+  }
+
+  .sub-menu {
+    padding: 4%;
+  }
+
+  .user-info h2 {
+    font-size: 16px;
+  }
+
+  .sub-menu-link p {
+    font-size: 14px;
+  }
+  /*Boton Accesibilidad*/
+  .boton-accesibilidad {
+    top: auto;
+    bottom: 250px;
+    right: 20px;
+    transform: none;
+  }
+
+
+
+/*/* Telefonos muy pequeños ----------------->*/
+@media (min-width: 360px) and (max-width: 768px) {
+  .navbar {
+    flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+  }
+  
+  .navbar .logo {
+    width: 80px;
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    font-size: 30pt;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 18px;
+    margin-left: 10px;
+  }
+  
+  .navbar ul {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+  }
+  
+  .navbar ul li {
+    margin: 10px;
+    justify-content: center;
+  }
+  
+  .navbar ul li a {
+    font-size: 0.9em;
+    letter-spacing: 1px;
+    
+  }
+  .profile-icon {
+    position: absolute;
+    top: 60px;
+    left: 250px;
+    font-size: 24pt;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  /*Submenu*/
+  .sub-menu-profile {
+  position: absolute; 
+  top: 40px; /* Ajusta según el tamaño del navbar */
+  left: 130px;
+  width: 200px;
+  display: block !important; /* Asegura visibilidad */
+  
+  }
+
+
+  .user-info h2 {
+  font-size: 16px;
+  }
+
+  .sub-menu-link p {
+  font-size: 14px;
+  }
+  /*Boton Acesibilidad*/
+  .boton-accesibilidad {
+    top: auto;
+    bottom: 250px;
+    right: 15px;
+    transform: none;
+  }
+}
+
+
+
+/*FOOTER RESPONSIVO*/
+/*footer responsivo en tamaño medio----------------------->*/
+@media (max-width: 768px) {
+  footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  footer ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    
+  }
+  
+  footer ul li {
+    margin: 5px 15px;
+  }
+}
+/*Footer responsivo en tamaño minimo----------------->*/
+@media (max-width: 480px) {
+  footer {
+    font-size: 12pt;
+    padding: 10px;
+  }
+  
+  footer ul li {
+    margin: 5px 10px;
+  }
+}
+
+/* MIGAS DE PAN Responsive */
+@media (max-width: 768px) {
+  .breadcrumbs-container {
+    padding: 10px;
+  }
+  
+  .breadcrumbs li {
+    font-size: 12px;
+  }
+  
+  .breadcrumbs .separator {
+    margin: 0 5px;
+  }
+}
+
+/* Services page styles responsivo */
+@media (max-width: 1024px) {
+  .services-title {
+    margin: 10% 10%;
+    grid-template-columns: 1fr;
+  }
+  
+  .services-title .services-title-content h1 {
+    font-size: 42pt;
+    margin-bottom: 5%;
+  }
+  
+  .services-title .services-title-img img {
+    height: 400px;
+  }
+  
+  .plan-basic, .plan-silver, .plan-gold {
+    grid-template-columns: 1fr;
+  }
+  
+  .plan-content h2, .plan-content h3, .plan-content h4 {
     font-size: 36pt;
   }
-  .info-ecoride p {
-    font-size: 16pt;
-  }
-  .info-ecoride button {
-    padding: 15px 25px;
-  }
-  .container {
-    grid-template-columns: 1fr;
-  }
-  .hero-content h2,
-  .hero-content h4 {
-    font-size: 32pt;
-  }
-  .hero-content p {
-    font-size: 16pt;
-  }
-  .articles-plan {
-    grid-template-columns: 1fr;
-  }
-  .articles-plan img {
+  
+  .plan-content p {
     width: 90%;
   }
+  
+  .go-prices h5 {
+    font-size: 40pt;
+  }
 }
 
-@media screen and (max-width: 480px) {
-  .info-ecoride h1 {
+@media (max-width: 768px) {
+  .services-title .services-title-content h1 {
+    font-size: 32pt;
+  }
+  
+  .que-ofrecemos-info{
+    font-size: 20pt;
+    text-align: center;
+  }
+  .que-ofrecemos-info .p{
+    text-align: justify;
+  }
+  .services-title .services-title-content p {
+    font-size: 14pt;
+  }
+  
+  .services-title .services-title-img img {
+    height: 300px;
+  }
+  
+  .plan-content h2, .plan-content h3, .plan-content h4 {
     font-size: 28pt;
+    text-align: justify;
   }
-  .info-ecoride p {
-    font-size: 14pt;
-  }
-  .info-ecoride button {
-    padding: 10px 20px;
-  }
-  .hero-content h2,
-  .hero-content h4 {
-    font-size: 24pt;
-  }
-  .hero-content p {
-    font-size: 14pt;
-  }
-  .articles-plan p {
+  
+  .plan-content p {
     font-size: 16pt;
   }
-  .button-services {
-    font-size: 14pt;
-    padding: 15px 20px;
+  
+  .go-prices h5 {
+    font-size: 32pt;
+  }
+  
+  .go-prices button {
+    font-size: 16pt;
   }
 }
 
-#mi_mapa {
-  height: 800px; 
-  width: 100%; 
-  border-radius: 0%;
+/* Login/Sign Up responsivo */
+@media (max-width: 768px) {
+  .form-box {
+    width: 90%;
+    max-width: 500px;
+  }
+  
+  .login-background h1 {
+    padding-top: 20%;
+    font-size: 32pt;
+  }
 }
-.containers {
-  border: 2px solid #333; 
-  padding: 20px;
-  border-radius: 8px;
-  text-align: center; 
+
+@media (max-width: 480px) {
+  .form-box {
+    height: auto;
+    min-height: 600px;
+  }
+  
+  .names-user {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .toggle-button {
+    padding: 10px 30px;
+    font-size: 12pt;
+  }
+  
+  .login-form .input-label, .signup-form .input-label, .form-box-contact .input-label {
+    font-size: 12pt;
+  }
+  
+  .login-background h1 {
+    font-size: 28pt;
+  }
 }
-.containers h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
+
+/* Tabla de precios responsiva */
+@media (max-width: 1024px) {
+  table {
+    width: 90%;
+  }
+  
+  table th, table td {
+    padding: 40px 30px;
+  }
 }
-.form {
+
+@media (max-width: 768px) {
+  .info-ecoride-precio h1 {
+    font-size: 60pt;
+  }
+  
+  table th, table td {
+    padding: 30px 20px;
+    font-size: 1.2em;
+  }
+  
+  table td:first-child {
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-ecoride-precio h1 {
+    font-size: 36pt;
+  }
+  
+  table {
+    width: 95%;
+  }
+  
+  table th, table td {
+    padding: 15px 10px;
+    font-size: 1em;
+  }
+  
+  table td:first-child {
+    font-size: 1em;
+  }
+}
+
+/* Contacto page responsivo */
+@media (max-width: 1024px) {
+  .contact {
+    height: auto;
+    grid-template-columns: 1fr;
+  }
+  
+  .text-contact {
+    margin: 15% 10%;
+    text-align: center;
+  }
+  
+  .text-contact h1 {
+    font-size: 36pt;
+    margin-right: 0;
+  }
+  
+  .text-contact p {
+    font-size: 18pt;
+    margin-right: 0;
+  }
+  
+  .form-box-contact {
+    width: 80%;
+    margin: 5% auto 15% auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .text-contact h1 {
+    font-size: 30pt;
+  }
+  
+  .text-contact p {
+    font-size: 16pt;
+  }
+  
+  .form-box-contact {
+    width: 90%;
+  }
+  
+  .form-box-contact textarea {
+    width: 100%;
+  }
+  
+  .form-box-contact .button-form {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* Pedir Servicio responsivo */
+@media (max-width: 1024px) {
+  #mi_mapa {
+    height: 10rem;
+    width: 30rem;
+    border-radius: 0;
+    position: center;
+    
+  }
+  .navbar{
+    position: static; /* Evitar que se quede fijo en móviles */
+    height: auto;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  #mi_mapa {
+    height: 400px;
+    width: 300px;
+    left: 50px;
+    
+  }
+}
+
+
+
+/* Mejora para overlay de contact */
+@media (max-width: 768px) {
+  .contact::before {
+    height: 100%;
+  }
+}
+
+/* Viewport height fix */
+@media (max-width: 768px) {
+  .info-ecoride, .info-ecoride-precio {
+    min-height: 100vh;
+    height: auto;
+    padding: 25% 5% 15% 5%;
+  }
+}
+
+/* Estructura de hero mejorada */
+@media (max-width: 768px) {
+  .container, .articles-plan {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .hero-content-img {
+    order: 1;
+  }
+  
+  .hero-content {
+    order: 2;
+  }
+  
+  .articles-plan article {
+    height: auto;
+    padding: 20px 0;
+  }
+  .articles-plan image{
+    width: 20px;
+    height: 20px;
+  }
+
+}
+
+/* Fix para la hamburguesa */
+@media (max-width: 480px) {
+  .navbar ul {
+    gap: 10px;
+  }
+}
+
+.menu {
   display: flex;
-  flex-direction: column;
-  align-items: center; 
+  list-style: none;
+  justify-content: center;
 }
 
-.form label {
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: #555;
-  text-align: center; 
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #f2f2f2;
 }
 
-.form input[type="text"] {
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-  width: 80%; 
-  text-align: center; 
-}
-.button-form {
-  padding: 10px 20px;
-  background-color: #12E821;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.button-form:hover {
-  background-color:#17901f;
-}
-
-/* Estilos para centrar el texto en la sección info-ecoride */
-.info-ecoride {
+.copy {
   text-align: center;
+}
+
+.my_nets, .map {
+  width: 30%;
+}
+
+.nets {
+  width: 25%;
+}
+
+.foot .social_net {
+  display: flex;
+  gap: 20px;
+}
+
+.alerta {
+  position: fixed;
+  width: 300px;
+  padding: 15px;
+  background-color: #f8f8f8;
+  border-left: 5px solid #4CAF50;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 100;
+  right: 20px;
+  top: 20px;
+}
+
+/* Telefonos muy pequeños */
+@media (max-width: 767px) {
+  .info-ecoride h1 {
+    font-size: 1.5rem;
+  }
+  
+  #mi_mapa {
+    height: 250px;
+  }
+  
+  .menu > li {
+    text-align: center;
+    display: block;
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 3.1%;
+    margin-top: 2.5%;
+    width: 50%;
+  }
+  
+  .form-box-contact {
+    width: 90%;
+  }
+  
+  .button-form {
+    width: 50%;
+  }
+  
+  .footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .copy {
+    width: 100%;
+  }
+  
+  .my_nets, .map {
+    width: 90%;
+  }
+  
+  .nets {
+    width: 40%;
+  }
+  
+  .foot .social_net {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+  
+  .alerta {
+    width: 50%;
+    left: calc(100vw - 75%);
+  }
+  
+  table {
+    font-size: 14px;
+  }
+  
+  table th, table td {
+    padding: 5px;
+  }
+  
+  .contact {
+    flex-direction: column;
+  }
+  
+  .text-contact, .form-box-contact {
+    width: 100%;
+  }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 991px) {
+  .info-ecoride h1 {
+    font-size: 1.8rem;
+  }
+  
+  .my_nets, .map {
+    width: 50%;
+  }
+  
+  .nets {
+    width: 40%;
+    margin-top: 20%;
+  }
+  
+  .contact {
+    gap: 30px;
+  }
+  
+  .form-box-contact, .text-contact {
+    min-width: 45%;
+  }
+  
+  table {
+    font-size: 15px;
+  }
+}
+
+/* Escritorio pequeños (portatiles) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .nets {
+    width: 20%;
+  }
+  
+  .info-ecoride h1 {
+    font-size: 2rem;
+  }
+  
+  #mi_mapa {
+    height: 450px;
+  }
+  
+  .contact {
+    gap: 40px;
+  }
+}
+
+/* Escritorio grandes */
+@media (min-width: 1200px) {
+  .nets {
+    width: 20%;
+  }
+  
+  .info-ecoride h1 {
+    font-size: 2.5rem;
+  }
+  
+  #mi_mapa {
+    height: 500px;
+  }
+  
+  .containers {
+    max-width: 800px;
+  }
+  
+  .hero-content {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .contact {
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 60px;
+  }
 }
