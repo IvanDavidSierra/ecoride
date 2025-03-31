@@ -989,7 +989,7 @@ table tbody tr td:last-child {
   border: none;
   padding: 10px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1rem; /* Cambiado a unidades relativas */
   border-radius: 5px;
   transition: 0.3s;
 }
@@ -1011,18 +1011,6 @@ body.contraste-alto a {
   background-color: black !important;
   color: rgb(255, 0, 0) !important;
 }
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: rotateX(-10deg);
-  }
-  to {
-    opacity: 1;
-    transform: rotateX(0);
-  }
-}
-
 @keyframes fadeOut {
   from {
     opacity: 1;
