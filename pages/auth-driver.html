@@ -1,0 +1,38 @@
+<div class="auth-driver">
+    <form class="form-box-driver" method="POST">
+
+        <label for="type-vehicle" class="input-label" >TIPO DE VEHICULO</label>
+        <select name="type-vehicle" id="type-vehicle" class="select-vehicletype" required >
+            <option value="null" selected>Seleccione su tipo de vehículo</option>
+            <option value="1" data-plan="Basic" data-price="2,000">Bicitaxi</option>
+            <option value="2" data-plan="Silver" data-price="4,000">Bicitaxi electrico</option>
+            <option value="3" data-plan="Gold" data-price="10,000">Auto electrico</option>
+        </select>
+
+        <label for="modelo" class="input-label">MODELO</label>
+        <input type="text" name="modelo" id="modelo" 
+        placeholder="Modelo" class="input-field" required/>
+        
+        <label for="color" class="input-label">COLOR</label>
+        <input type="text" name="color" id="color" placeholder="Color" class="input-field" required/>
+        
+        <label for="name" class="input-label">PLACA</label>
+        <input type="text" placeholder="Placa" class="input-field" id="placa" disabled/>
+    
+        <div class="form-footer-driver">
+            <div class="auth-driver-box" style="display: none;">
+                <p>Aplicas para el plan: </p>
+                <p id="plan">(plan)</p>
+                <p id="pricePlan">Tus viajes tendra un precio fijo de: COP $(precio)</p>
+            </div>
+            <button type="submit" class="button-form" id="crearVehiculo">Enviar</button>
+        </div>
+    </form>
+    
+
+    <div class="auth-driver-text">
+        <h1>Conviertete en un conductor en <span class="green">EcoRide</span>, apoya al medio ambiente y genera ingresos por ello.</h1>
+    </div>
+
+
+</div>

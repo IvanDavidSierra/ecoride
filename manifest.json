@@ -5,30 +5,30 @@
   "lang": "es-ES",
   "start_url": "./",
   "scope": "./",
-  "theme_color": "#000000",
-  "background_color": "#000000",
+  "theme_color": "#12E821",
+  "background_color": "#12E821",
   "display": "standalone",
   "display_override": ["window-controls-overlay"],
   "edge_side_panel": { "enabled": true, "preferred_width": 400 },
   "orientation": "portrait",
   "icons": [
     {
-      "src": "./assets/logo Eco-Ride.jpg",
-      "sizes": "1080x1080",
-      "type": "image/jpg"
+      "src": "./assets/img/logo Eco-Ride.png",
+      "sizes": "500x500",
+      "type": "image/png"
     },
     {
-      "src": "./assets/Logo Eco-Ride 512x512.svg",
+      "src": "./assets/img/Logo Eco-Ride 512x512.svg",
       "sizes": "512x512",
       "type": "image/svg"
     },
     {
-      "src": "./assets/Logo Eco-Ride 256x256.svg",
+      "src": "./assets/img/Logo Eco-Ride 256x256.svg",
       "sizes": "256x256",
       "type": "image/svg"
     },
     {
-      "src": "./assets/Logo Eco-Ride 128x128.svg",
+      "src": "./assets/img/Logo Eco-Ride 128x128.svg",
       "sizes": "128x128",
       "type": "image/svg"
     }

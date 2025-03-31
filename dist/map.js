@@ -1,21 +1,23 @@
+import { registrarViajes, verViajesConductor, traerVehiculos } from "./rides.js";
+
 const PLANES = {
   basic: {
     precio: 2000,
-    maxKm: 1.99,
+    maxKm: 1,
     nombre: "Basic",
     color: " #12E821", 
     
   },
   silver: {
     precio: 4000,
-    maxKm: 2.99,
+    maxKm: 3,
     nombre: "Silver",
     color: " #12E821", 
     
   },
   gold: {
     precio: 10000,
-    maxKm: 3.99,
+    maxKm: 5,
     nombre: "Gold",
     color: " #12E821",
     
@@ -29,11 +31,24 @@ function determinarPlan(distanciaKm) {
   return null;
 }
 
-function initMap() {
+export function initMap() {
   let mapContainer = document.getElementById("mi_mapa");
+  const userRol = sessionStorage.getItem("userRol");
+  const formMap = document.getElementById("formMap")
+  const viajesConductor = document.getElementById("viajesConductor");
+
+
+  if (userRol === "conductor"){
+    verViajesConductor();
+    formMap.style.display = "none";
+    viajesConductor.style.display = "block";
+    traerVehiculos();
+  }else{
+    formMap.style.display = "flex";
+    viajesConductor.style.display = "none";
+  }
 
   if (!mapContainer) {
-    console.error("El contenedor del mapa no se encontró.");
     return;
   }
 
@@ -100,11 +115,14 @@ function initMap() {
   }
 
   // Capturar el formulario
-  document.getElementById("form").addEventListener("submit", function (e) {
+  document.getElementById("formMap").addEventListener("submit", function (e) {
     e.preventDefault();
 
     let direccionPartida = document.getElementById("punto_partida").value.trim();
     let direccionLlegada = document.getElementById("punto_llegada").value.trim();
+
+    sessionStorage.setItem("origen", direccionPartida);
+    sessionStorage.setItem("destino", direccionLlegada);
 
     if (!direccionPartida || !direccionLlegada) {
       alert("Por favor ingrese ambas direcciones.");
@@ -214,6 +232,8 @@ function obtenerRuta(puntoPartida, puntoLlegada, map, callback) {
           }
         }).addTo(map);
         
+        registrarViajes(distanciaKm, plan);
+
         callback(nuevaRuta);
       } else {
         console.error("No se pudo obtener la ruta.");
@@ -228,7 +248,7 @@ function obtenerRuta(puntoPartida, puntoLlegada, map, callback) {
 
 // Inicialización condicional del mapa
 document.addEventListener("DOMContentLoaded", () => {
-  if (window.location.href.includes("carrera")) {
+  if (window.location.href.includes("app")) {
     initMap();
   }
 });

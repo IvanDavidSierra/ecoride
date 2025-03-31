@@ -4,16 +4,20 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  sendPasswordResetEmail,
   signOut
 } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 import {
   getFirestore,
   setDoc,
   doc,
+  getDoc
 } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
 
 import { Validation } from "./validationForms.js";
+
+import { router } from "./app.js";
+
+import { traerVehiculos } from "./rides.js";
 
 const validation = new Validation();
 
@@ -91,6 +95,7 @@ function registerUsers() {
   const password = document.getElementById("password-register");
   const confirmPassword = document.getElementById("confirm-password");
   const typeUser = document.getElementById("driver-check").checked;
+
   const terms = document.getElementById("terms");
 
   // Validación de campos
@@ -110,9 +115,7 @@ function registerUsers() {
   cambiarClase(password, formValid.contraseña);
   mensajeError(formValid.contraseña, "password-error");
 
-  formValid.confirmarContraseña = validation.validPassword(
-    confirmPassword.value
-  );
+  formValid.confirmarContraseña = validation.validPassword(confirmPassword.value);
   const coincidencia = password.value === confirmPassword.value;
   if (formValid.confirmarContraseña && coincidencia) {
     cambiarClase(confirmPassword, true);
@@ -126,8 +129,7 @@ function registerUsers() {
   cambiarClase(terms, formValid.terminos);
   mensajeError(formValid.terminos, "terms-error");
 
-  const allValid = Object.values(formValid).every((val) => val === true);
-  if (!allValid) {
+  if (!Object.values(formValid).every((val) => val === true)) {
     return;
   }
 
@@ -135,45 +137,58 @@ function registerUsers() {
   const db = getFirestore();
 
   createUserWithEmailAndPassword(auth, email.value, password.value)
-  .then((userCredential) => {
-    const user = userCredential.user;
-    const userData = {
-      firstName: name.value,
-      lastName: lastName.value,
-      email: email.value,
-    };
-    mensajeError(true, "systemError");
-    mensajeError(true, "emailInUse"); 
-    mensajeExitoso(true, "success");
-    const docRef = doc(db, "users", user.uid);
-    setDoc(docRef, userData)
-      .then(() => {
-        carga.style.display = 'none';
-        mensajeError(true, "systemError");
-        mensajeExitoso(true, "success");
-        setTimeout(() => {
-          router.navigate("/app");
-        }, 800);
-      })
-      .catch((error) => {
-        carga.style.display = 'none';
+    .then((userCredential) => {
+      const user = userCredential.user;
+      const userData = {
+        nameUser: name.value,
+        lastNameUser: lastName.value,
+        email: email.value,
+        conductor: typeUser,
+      };
+
+      mensajeError(true, "systemError");
+      mensajeError(true, "emailInUse"); 
+      mensajeExitoso(true, "success");
+
+      const docRef = doc(db, "EcoRideUsers", user.uid);
+      setDoc(docRef, userData)
+        .then(() => {
+          carga.style.display = "none";
+
+          // Guardar usuario en sessionStorage
+          sessionStorage.setItem("userName", userData.nameUser);
+          sessionStorage.setItem("userLastName", userData.lastNameUser);
+          sessionStorage.setItem("noRememberUser", user.uid);
+
+          // Mostrar mensaje de bienvenida
+          document.querySelector(".user-info h2").innerHTML =
+            `¡Bienvenido, ${userData.nameUser} ${userData.lastNameUser}!`;
+
+          // Redirección sin recargar la página
+          setTimeout(() => {
+            if (typeUser) {
+              router.navigate("/auth-driver");
+            } else {
+              router.navigate("/app");
+            }
+          }, 800);
+        })
+        .catch(() => {
+          carga.style.display = "none";
+          mensajeError(false, "systemError");
+        });
+    })
+    .catch((error) => {
+      carga.style.display = "none";
+      if (error.code === "auth/email-already-in-use") {
+        mensajeError(false, "emailInUse");
+      } else {
         mensajeError(false, "systemError");
-      });
-  })
-  .catch((error) => {
-    carga.style.display = 'none';
-    var errorCode = error.code;
-    if (errorCode == "auth/email-alreday-in-use") {
-      carga.style.display = 'none';
-      mensajeError(false, "emailInUse"); 
-    } else {
-      carga.style.display = 'none';
-      mensajeError(false, "systemError");
-    }
-  });
+      }
+    });
 }
 
-function loginUsers() {
+async function loginUsers() {
   const emailInput = document.querySelector("#mailLogin");
   const passwordInput = document.querySelector("#passwordLogin");
   const rememberMe = document.querySelector("#remember").checked;
@@ -181,41 +196,73 @@ function loginUsers() {
 
   carga.style.display = "block";
 
-  const email = emailInput.value;
-  const password = passwordInput.value;
-
   const auth = getAuth();
+  const db = getFirestore();
 
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      carga.style.display = "none";
-      if (rememberMe) {
-        localStorage.setItem("rememberMeUser", user.uid);
-      } else {
-        sessionStorage.setItem("noRememberUser", user.uid);
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
+    const user = userCredential.user;
+    carga.style.display = "none";
+
+
+    // Obtener datos del usuario desde Firestore
+    const userRef = doc(db, "EcoRideUsers", user.uid);
+    const userSnap = await getDoc(userRef);
+
+    if (userSnap.exists()) {
+      const userData = userSnap.data();
+
+    // Guardar sesión en localStorage o sessionStorage
+    if (rememberMe) {
+      localStorage.setItem("rememberMeUser", user.uid);
+      localStorage.setItem("userName", userData.nameUser);
+      localStorage.setItem("userLastName", userData.lastNameUser);
+      if(userData.conductor === true){
+        localStorage.setItem("userRol", "conductor");
+      }else{
+        localStorage.setItem("userRol", "pasajero");
       }
-      mensajeError(true, "credentials");
-      mensajeError(true, "noCredentials");
-      cambiarClase(emailInput, true);
-      cambiarClase(passwordInput, true);
-      mostrarMensaje(true, "successLogin", emailInput, passwordInput);
-      setTimeout(() => {
-        router.navigate("/app");
-      }, 500);
-    })
-    .catch((error) => {
-      carga.style.display = "none";
-      const errorCode = error.code;
-      console.error(error);
-      if (errorCode === "auth/invalid-credential") {
-        mensajeError(true, "noCredentials");
-        mostrarMensaje(false, "credentials", emailInput, passwordInput);
-      } else {
+    } else {
+      sessionStorage.setItem("noRememberUser", user.uid);
+      sessionStorage.setItem("userName", userData.nameUser);
+      sessionStorage.setItem("userLastName", userData.lastNameUser);
+      if(userData.conductor === true){
+        sessionStorage.setItem("userRol", "conductor");
+      }else{
+        sessionStorage.setItem("userRol", "pasajero");
+      }
+    }
+
+      // Mensajes de éxito
         mensajeError(true, "credentials");
-        mostrarMensaje(false, "noCredentials", emailInput, passwordInput);
-      }
-    });
+        mensajeError(true, "noCredentials");
+        cambiarClase(emailInput, true);
+        cambiarClase(passwordInput, true);
+        mostrarMensaje(true, "successLogin", emailInput, passwordInput);
+
+      // Mostrar mensaje de bienvenida
+      document.querySelector(".user-info h2").innerHTML =
+        `¡Bienvenido, ${userData.nameUser} ${userData.lastNameUser}!`;
+
+      // Redirección según el tipo de usuario
+      setTimeout(() => {
+        if (userData.conductor) {
+          router.navigate("/app");
+        } else {
+          router.navigate("/app");
+        }
+      }, 500);
+    } else {
+      console.log("Usuario no encontrado en Firestore");
+    }
+  } catch (error) {
+    carga.style.display = "none";
+    if (error.code === "auth/invalid-credential") {
+      mensajeError(true, "noCredentials");
+    } else {
+      mensajeError(true, "credentials");
+    }
+  }
 }
 
 function mostrarMensaje(isValid, tipo, emailInput, passwordInput) {
@@ -228,17 +275,33 @@ function mostrarMensaje(isValid, tipo, emailInput, passwordInput) {
   }
 }
 
-function logout(){
-  localStorage.removeItem("rememberMeUser");
-  sessionStorage.removeItem("noRememberUser");
+function logout() {
   const auth = getAuth();
   signOut(auth)
-  .then(() => {
-    router.navigate("/");
-  })
-  .catch((error) => {
-    console.error("Error al cerrar sesión:", error);
-  });
+    .then(() => {
+      // Eliminar toda la información de sesión
+      localStorage.removeItem("rememberMeUser");
+      localStorage.removeItem("userName");
+      localStorage.removeItem("userLastName");
+      localStorage.removeItem("userRol");
+
+      sessionStorage.removeItem("noRememberUser");
+      sessionStorage.removeItem("userName");
+      sessionStorage.removeItem("userLastName");
+      sessionStorage.removeItem("userRol");
+      sessionStorage.removeItem("origen");
+      sessionStorage.removeItem("destino");
+
+      // Limpiar la interfaz
+      document.querySelector(".user-info h2").innerHTML = "";
+      
+      // Redirigir al usuario
+      router.navigate("/");
+      location.reload(true);
+    })
+    .catch((error) => {
+      console.error("Error al cerrar sesión:", error);
+    });
 }
 
 
